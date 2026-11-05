@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#0f766e"/><path d="M13 20 22 46 32 26 42 46 51 20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="15" r="5" fill="#fbbf24"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14918a"/><stop offset="1" stop-color="#0b5f58"/></linearGradient></defs>
+<rect width="100" height="100" rx="22" fill="url(#bg)"/>
+<path d="M16 40 L31 82 L50 50 L69 82 L84 40" fill="none" stroke="#1e293b" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M16 40 L31 82 L50 50 L69 82 L84 40" fill="none" stroke="#fbbf24" stroke-width="2.4" stroke-dasharray="5 5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d=" M4 31 C9 30 15 27 19 23 C20 18 23 14 27 12 C29 11 31 10 32 8 C32 6 31 3 32 1.5 C33.2 3 33.6 5.5 33.4 7 C34 5 35 3 35.8 2.6 C36.2 4.5 35.4 6.5 34.6 7.8 C36 8 38.5 8.6 39.6 9.6 C39.4 10.6 37.6 10.8 35.6 10.9 C34.6 11.9 33.6 13 33 14 C34.4 14.6 35.6 15.6 36 16.6 C35.4 17 34.4 16.4 33.2 15.9 C32.4 17 31.4 18.4 30.6 19.6 C31.6 22 33.4 24.4 36 25.4 C38.6 26 41 26.2 42.4 27 C41.6 27.8 38.4 27.8 35.4 27.4 C31.8 27 28.8 25.6 26.8 24.2 C24.6 26 21.6 28 18 29.4 C13 31.4 8 32 4 31 Z" fill="#fff" transform="translate(29 9) scale(0.98)"/><circle cx="84" cy="40" r="6.5" fill="#fff"/><circle cx="84" cy="40" r="2.8" fill="#0f766e"/></svg>
