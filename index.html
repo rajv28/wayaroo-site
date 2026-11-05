@@ -1,76 +1,153 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wayaroo: live maps for getting around Australia</title>
-<meta name="description" content="Wayaroo is a free map app for Australia: live buses, trains and trams, trip planning, turn-by-turn directions, fuel prices and weather, in English, 中文, हिन्दी and ਪੰਜਾਬੀ.">
+<title>Wayaroo: live buses, trains, fuel prices and directions on one map for Australia</title>
+<meta name="description" content="Wayaroo is a free map app for Australia. See live buses, trains and trams, plan trips with fares, get turn-by-turn directions with speed limits and level-crossing warnings, find the cheapest fuel near you and public toilets. In 20 languages, no account needed.">
+<link rel="canonical" href="https://wayaroo.com/">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<style>
-:root { --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --bg:#f8fafc; --card:#ffffff; --brand:#0f766e; --sun:#fbbf24; }
-@media (prefers-color-scheme: dark) { :root { --ink:#e2e8f0; --muted:#94a3b8; --line:#1e293b; --bg:#0b1220; --card:#111a2c; } }
-* { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",sans-serif; }
-a { color:var(--brand); }
-.wrap { max-width:980px; margin:0 auto; padding:0 20px; }
-nav { display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
-.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:20px; color:var(--ink); text-decoration:none; }
-.brand img { width:36px; height:36px; }
-nav .links a { margin-left:18px; color:var(--muted); text-decoration:none; font-size:15px; }
-.hero { background:var(--brand); color:#fff; border-radius:24px; padding:56px 32px; margin:8px 0 40px; position:relative; overflow:hidden; }
-.hero h1 { font-size:clamp(30px,5vw,48px); line-height:1.15; margin:0 0 14px; max-width:640px; }
-.hero p { font-size:19px; margin:0 0 24px; max-width:600px; opacity:.92; }
-.hero .sun { position:absolute; right:-40px; top:-40px; width:220px; height:220px; border-radius:50%; background:var(--sun); opacity:.9; }
-.badge { display:inline-block; background:#fff; color:var(--brand); font-weight:700; padding:12px 20px; border-radius:12px; text-decoration:none; }
-.langs { margin-top:18px; font-size:15px; opacity:.9; }
-h2 { font-size:26px; margin:0 0 18px; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:48px; }
-.card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; }
-.card h3 { margin:0 0 6px; font-size:18px; }
-.card p { margin:0; color:var(--muted); font-size:15px; }
-.trust { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; margin-bottom:48px; }
-.trust ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
-footer { border-top:1px solid var(--line); padding:24px 0 40px; color:var(--muted); font-size:14px; }
-footer a { color:var(--muted); margin-right:16px; }
-</style>
+<link rel="stylesheet" href="site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wayaroo">
+<meta property="og:title" content="Wayaroo: everything live on one map for getting around Australia">
+<meta property="og:description" content="Live public transport, trip planning, turn-by-turn directions, fuel prices, weather and public toilets. Free, no account, 20 languages.">
+<meta property="og:url" content="https://wayaroo.com/">
+<meta property="og:image" content="https://wayaroo.com/img/live-melbourne.jpg">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wayaroo: everything live on one map for getting around Australia">
+<meta name="twitter:description" content="Live public transport, trip planning, directions, fuel prices, weather and public toilets. Free, no account, 20 languages.">
+<meta name="twitter:image" content="https://wayaroo.com/img/live-melbourne.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://wayaroo.com/#org",
+      "name": "Ozrsym Pty Ltd",
+      "url": "https://wayaroo.com/",
+      "logo": "https://wayaroo.com/icon.svg",
+      "email": "support@wayaroo.com",
+      "address": { "@type": "PostalAddress", "addressRegion": "Victoria", "addressCountry": "AU" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://wayaroo.com/#website",
+      "url": "https://wayaroo.com/",
+      "name": "Wayaroo",
+      "publisher": { "@id": "https://wayaroo.com/#org" },
+      "inLanguage": "en-AU"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://wayaroo.com/#app",
+      "name": "Wayaroo",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "iOS, Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+      "description": "Live public transport, trip planning with fares, turn-by-turn directions with speed limits and level-crossing warnings, fuel prices, weather and public toilets on one map of Australia.",
+      "featureList": [
+        "Live buses, trains and trams on the map",
+        "Trip planner with Myki fares in Melbourne",
+        "Turn-by-turn directions with speed limits, lane guidance, speed humps and level-crossing warnings",
+        "Cheapest fuel near you and when to fill up",
+        "Public toilets across Australia",
+        "Follow a flight by its number, with the landing time",
+        "Weather and air quality on the map",
+        "20 languages"
+      ],
+      "inLanguage": ["en", "zh", "zh-Hant", "hi", "pa", "ar", "vi", "el", "it", "fil", "es", "ne", "bn", "ur", "ta", "ko", "ja", "id", "fr", "de"],
+      "publisher": { "@id": "https://wayaroo.com/#org" },
+      "screenshot": "https://wayaroo.com/img/live-melbourne.jpg",
+      "countriesSupported": "AU"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is Wayaroo free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Wayaroo is free to use and needs no account. Your settings stay on your phone." } },
+        { "@type": "Question", "name": "Which cities have live public transport?", "acceptedAnswer": { "@type": "Answer", "text": "Melbourne and Victoria (trains, trams and buses), Sydney and New South Wales (trains, metro, buses, ferries and light rail), and hundreds of cities worldwide through the transport operators' own open feeds." } },
+        { "@type": "Question", "name": "Where do the fuel prices come from?", "acceptedAnswer": { "@type": "Answer", "text": "In Victoria from the state government's Servo Saver data (about a day old), everywhere from prices that Wayaroo drivers share. Wayaroo also shows whether prices in your area are low, rising or falling so you know when to fill up." } },
+        { "@type": "Question", "name": "Does it work while driving?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Turn-by-turn directions with lane arrows, the speed limit, speed humps, level crossings and crash hotspots spoken out loud. Nothing distracting: no ads and no pop-ups while you drive." } },
+        { "@type": "Question", "name": "Which languages does Wayaroo speak?", "acceptedAnswer": { "@type": "Answer", "text": "English, 中文 (simplified and traditional), हिन्दी, ਪੰਜਾਬੀ, العربية, Tiếng Việt, Ελληνικά, Italiano, Filipino, Español, नेपाली, বাংলা, اردو, தமிழ், 한국어, 日本語, Bahasa Indonesia, Français and Deutsch. Stops are announced in your language too." } },
+        { "@type": "Question", "name": "Can I follow a flight?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Type the flight number (QF416, JQ 502) into the search box and Wayaroo shows the plane on the map, where it's coming from and going to, and about when it lands. The card follows the plane while it's open. Free, from community ADS-B receivers (adsb.lol)." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
   <nav>
     <a class="brand" href="index.html"><img src="icon.svg" alt="">Wayaroo</a>
-    <div class="links"><a href="support.html">Support</a><a href="privacy.html">Privacy</a></div>
+    <div class="links"><a href="live-public-transport.html">Live transport</a><a href="fuel-prices.html">Fuel</a><a href="driving.html">Driving</a><a href="public-toilets.html">Toilets</a><a href="support.html">Support</a></div>
   </nav>
 
   <section class="hero">
     <div class="sun" aria-hidden="true"></div>
-    <h1>Get around Australia with everything live on one map.</h1>
-    <p>See where your bus, train or tram is right now, plan the trip, and get there with turn-by-turn directions, fuel prices and the weather on the way.</p>
-    <span class="badge">Coming soon to the App Store</span>
-    <p class="langs">English · 中文 · हिन्दी · ਪੰਜਾਬੀ</p>
+    <div>
+      <h1>Get around Australia with everything live on one map.</h1>
+      <p>See where your bus, train or tram is right now, plan the trip with the fare, and drive there with turn-by-turn directions, speed limits, fuel prices and the weather on the way.</p>
+      <span class="badge">Coming soon to the App Store</span>
+      <p class="langs">20 languages · English · 中文 · हिन्दी · ਪੰਜਾਬੀ · العربية · Tiếng Việt · and more</p>
+    </div>
+    <img class="shot" src="img/live-melbourne.jpg" width="375" height="812" alt="Wayaroo showing live trams, trains and buses moving through Melbourne's city centre">
   </section>
 
   <h2>What Wayaroo does</h2>
   <div class="grid">
-    <div class="card"><h3>Live public transport</h3><p>Buses, trains, trams and ferries moving on the map, across Australia and in many cities worldwide.</p></div>
-    <div class="card"><h3>Trips and directions</h3><p>Plan by car, public transport, bike or on foot, with turn-by-turn directions, lane guidance and speed limits.</p></div>
-    <div class="card"><h3>Fuel and costs</h3><p>Fuel prices near you for every fuel type, and what a trip will cost.</p></div>
-    <div class="card"><h3>Weather on the map</h3><p>Rain and wind on the map, today's forecast, UV and plain advice on what to wear.</p></div>
-    <div class="card"><h3>Places you need</h3><p>Public toilets, EV chargers, parking, traffic cameras and more, with the map kept clean.</p></div>
-    <div class="card"><h3>Reports from drivers</h3><p>Potholes and hazards reported by other users, so you know before you get there.</p></div>
+    <a class="card" href="live-public-transport.html"><h3>Live public transport</h3><p>Every bus, train, tram and ferry moving on the map, with how late it is, its next stops, and whether it's usually late or full at this time.</p></a>
+    <a class="card" href="driving.html"><h3>Directions that look after you</h3><p>Turn-by-turn by car, bike or on foot, with lane arrows, the speed limit, speed humps, level crossings and crash hotspots spoken aloud.</p></a>
+    <a class="card" href="fuel-prices.html"><h3>Fuel prices and when to fill up</h3><p>The cheapest fuel within 5 to 30 km for your fuel type, whether the drive is worth it, and whether prices are rising or falling.</p></a>
+    <a class="card" href="public-toilets.html"><h3>Public toilets near you</h3><p>Australia's public toilets on the map, with opening hours and accessibility, plus customer toilets in shops and servos.</p></a>
+    <div class="card"><h3>Weather on the map</h3><p>Rain, wind and dust haze moving on the map, today's forecast and UV, and plain advice on what to wear and whether to take an umbrella.</p></div>
+    <div class="card"><h3>Your stop, in your language</h3><p>Wayaroo announces the next stop in your language. If you can't follow the driver, a card asks them in English to tell you when you're there.</p></div>
   </div>
+
+  <section class="feature">
+    <div>
+      <h2>Nearest stops, next departures, straight away</h2>
+      <p>Open <b>For you</b> and the closest stops are at the top with the next few departures at each: which route, where it's going, and how many minutes away. Tap one to follow that bus or tram live. Below it, today's weather, your usual places at this time of day, and the cheapest fuel near you.</p>
+      <p>Riding along, Wayaroo tells you when your stop is next. Turn on <b>Announce every stop</b> and it reads each one out, so you can look out of the window instead of at the screen.</p>
+    </div>
+    <img class="shot" src="img/for-you.jpg" width="375" height="812" alt="The For you tab showing the nearest stops with the next departures in minutes">
+  </section>
+
+  <section class="feature">
+    <div>
+      <h2>A clean map, with only what you need on it</h2>
+      <p>Pick a map type, then tap the layers you want: public transport, petrol stations, the weather now, EV chargers, toilets, hazard reports, cameras, parking and live flights. Everything else stays off, so the map is never cluttered.</p>
+      <p>Satellite and 3D hills are there when you want them, and NASA's picture of today for a look at the smoke, cloud and snow.</p>
+    </div>
+    <img class="shot" src="img/layers.jpg" width="375" height="812" alt="The Layers screen with map types and big tiles for public transport, petrol stations, weather and EV chargers">
+  </section>
 
   <section class="trust">
     <h2>Built to be trusted</h2>
     <ul>
-      <li>No account needed. Your settings stay on your phone.</li>
-      <li>Nothing distracting while you drive: no ads, no pop-ups.</li>
-      <li>Every data source is credited and used under its licence.</li>
+      <li>No account needed. Your settings stay on your phone, and you can back them up to a file.</li>
+      <li>Nothing distracting while you drive: no ads, no pop-ups, no moving pictures.</li>
+      <li>Every data source is named and used under its licence. See the <a href="credits.html">data credits</a>.</li>
+      <li>Made in Melbourne by <a href="https://wayaroo.com/">Ozrsym Pty Ltd</a>, a small Australian company.</li>
     </ul>
+  </section>
+
+  <section class="faq">
+    <h2>Questions people ask</h2>
+    <details><summary>Is Wayaroo free?</summary><p>Yes. Wayaroo is free to use and needs no account. Your settings stay on your phone.</p></details>
+    <details><summary>Which cities have live public transport?</summary><p>Melbourne and Victoria (trains, trams and buses), Sydney and New South Wales (trains, metro, buses, ferries and light rail), and hundreds of cities worldwide through the transport operators' own open feeds.</p></details>
+    <details><summary>Where do the fuel prices come from?</summary><p>In Victoria from the state government's Servo Saver data (about a day old), and everywhere from prices that Wayaroo drivers share. Wayaroo also shows whether prices in your area are low, rising or falling, so you know when to fill up.</p></details>
+    <details><summary>Does it work while driving?</summary><p>Yes. Turn-by-turn directions with lane arrows, the speed limit, speed humps, level crossings and crash hotspots spoken out loud. Nothing distracting: no ads and no pop-ups while you drive.</p></details>
+    <details><summary>Which languages does Wayaroo speak?</summary><p>English, 中文 (simplified and traditional), हिन्दी, ਪੰਜਾਬੀ, العربية, Tiếng Việt, Ελληνικά, Italiano, Filipino, Español, नेपाली, বাংলা, اردو, தமிழ், 한국어, 日本語, Bahasa Indonesia, Français and Deutsch. Stops are announced in your language too.</p></details>
+    <details><summary>Can I follow a flight?</summary><p>Yes. Type the flight number (QF416, JQ 502) into the search box and Wayaroo shows the plane on the map, where it's coming from and going to, and about when it lands. The card follows the plane while it's open, which is handy when you're picking someone up. Free, from community ADS-B receivers.</p></details>
+    <details><summary>When can I get it?</summary><p>Wayaroo is going through App Store review now. Email <a href="mailto:support@wayaroo.com">support@wayaroo.com</a> and we'll tell you the day it's out.</p></details>
   </section>
 
   <footer>
     <p>Wayaroo™ is published by Ozrsym Pty Ltd, Victoria, Australia. Contact: <a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
-    <p><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="credits.html">Data credits</a></p>
+    <p><a href="live-public-transport.html">Live transport</a><a href="fuel-prices.html">Fuel prices</a><a href="driving.html">Driving</a><a href="public-toilets.html">Public toilets</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="credits.html">Data credits</a></p>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>
 </div>

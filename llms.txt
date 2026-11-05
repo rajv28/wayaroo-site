@@ -1,0 +1,28 @@
+# Wayaroo
+
+> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. Coming to the App Store; the web version follows.
+
+## What it does
+- Live buses, trains and trams on the map: Melbourne and Victoria (Transport Victoria feed), Sydney and NSW (Transport for NSW feeds), hundreds of cities worldwide (operators' open GTFS feeds). Shows delay, next stops, "usually late" and "often full" at this time, nearest stops with next departures.
+- Trip planner (Melbourne) with Myki fares, connection check (spare minutes at each change), replacement-bus flags, step-free option.
+- Directions by car, bike or foot: lane arrows, speed limit, school zones, speed humps, level-crossing wait, crash hotspots, long-light warnings, truck mode (height and weight limits), share-my-trip link, rain at destination.
+- Fuel: cheapest station within 5–30 km for your fuel type, whether the detour is worth it, and when to fill up from the local price cycle. Victoria's official Servo Saver prices plus driver-shared prices.
+- Public toilets across Australia (National Public Toilet Map) with hours and accessibility, plus customer toilets in shops, libraries and servos.
+- Weather and air quality on the map (NOAA GFS), today's forecast, UV and clothing advice.
+- 20 languages: en, zh, zh-Hant, hi, pa, ar, vi, el, it, fil, es, ne, bn, ur, ta, ko, ja, id, fr, de.
+
+## Pages
+- [Home](https://wayaroo.com/)
+- [Live public transport](https://wayaroo.com/live-public-transport.html)
+- [Fuel prices and when to fill up](https://wayaroo.com/fuel-prices.html)
+- [Driving: directions and warnings](https://wayaroo.com/driving.html)
+- [Public toilets](https://wayaroo.com/public-toilets.html)
+- [Support](https://wayaroo.com/support.html)
+- [Data credits and licences](https://wayaroo.com/credits.html)
+- [Privacy](https://wayaroo.com/privacy.html) · [Terms](https://wayaroo.com/terms.html)
+
+## Facts
+- Publisher: Ozrsym Pty Ltd, Victoria, Australia. Contact: support@wayaroo.com
+- Price: free. No account. Settings stay on the phone.
+- No ads while driving or navigating.
+- Every data source is credited and used under a commercial-friendly licence.

@@ -1,0 +1,43 @@
+:root { --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --bg:#f8fafc; --card:#ffffff; --brand:#0f766e; --sun:#fbbf24; }
+@media (prefers-color-scheme: dark) { :root { --ink:#e2e8f0; --muted:#94a3b8; --line:#1e293b; --bg:#0b1220; --card:#111a2c; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",sans-serif; }
+a { color:var(--brand); }
+img { max-width:100%; height:auto; }
+.wrap { max-width:980px; margin:0 auto; padding:0 20px; }
+nav { display:flex; align-items:center; justify-content:space-between; padding:18px 0; flex-wrap:wrap; gap:8px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:20px; color:var(--ink); text-decoration:none; }
+.brand img { width:36px; height:36px; }
+nav .links a { margin-left:16px; color:var(--muted); text-decoration:none; font-size:15px; }
+.hero { background:var(--brand); color:#fff; border-radius:24px; padding:48px 32px; margin:8px 0 40px; position:relative; overflow:hidden; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; }
+.hero h1 { font-size:clamp(30px,5vw,46px); line-height:1.12; margin:0 0 14px; max-width:620px; }
+.hero p { font-size:19px; margin:0 0 22px; max-width:580px; opacity:.94; }
+.hero .sun { position:absolute; right:-40px; top:-40px; width:220px; height:220px; border-radius:50%; background:var(--sun); opacity:.9; }
+.hero .shot { position:relative; z-index:1; width:220px; border-radius:28px; border:6px solid rgba(255,255,255,.35); box-shadow:0 20px 50px rgba(0,0,0,.35); }
+@media (max-width:760px) { .hero { grid-template-columns:1fr; } .hero .shot { width:200px; justify-self:center; } }
+.badge { display:inline-block; background:#fff; color:var(--brand); font-weight:700; padding:12px 20px; border-radius:12px; text-decoration:none; }
+.badge.ghost { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.7); margin-left:8px; }
+.langs { margin-top:18px; font-size:15px; opacity:.92; }
+h2 { font-size:26px; margin:0 0 18px; }
+h3 { font-size:19px; margin:28px 0 8px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:48px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; text-decoration:none; color:inherit; display:block; }
+.card h3 { margin:0 0 6px; font-size:18px; }
+.card p { margin:0; color:var(--muted); font-size:15px; }
+a.card:hover { border-color:var(--brand); }
+.trust { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; margin-bottom:48px; }
+.trust ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+.feature { display:grid; grid-template-columns:1fr 240px; gap:32px; align-items:start; margin-bottom:40px; }
+.feature .shot { width:240px; border-radius:24px; border:1px solid var(--line); box-shadow:0 12px 30px rgba(0,0,0,.15); }
+@media (max-width:760px) { .feature { grid-template-columns:1fr; } .feature .shot { justify-self:center; } }
+.faq details { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px; }
+.faq summary { font-weight:700; cursor:pointer; }
+.faq p { margin:10px 0 0; color:var(--muted); }
+.steps { counter-reset:step; padding-left:0; list-style:none; }
+.steps li { position:relative; padding-left:44px; margin:0 0 14px; }
+.steps li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:2px; width:30px; height:30px; border-radius:50%; background:var(--brand); color:#fff; font-weight:700; display:grid; place-items:center; font-size:15px; }
+.note { color:var(--muted); font-size:15px; }
+.cta { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; margin:40px 0; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+.cta .badge { background:var(--brand); color:#fff; }
+footer { border-top:1px solid var(--line); padding:24px 0 40px; color:var(--muted); font-size:14px; }
+footer a { color:var(--muted); margin-right:16px; }
