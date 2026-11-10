@@ -92,7 +92,25 @@
       <h1>Get around Australia with everything live on one map.</h1>
       <p>See where your bus, train or tram is right now, plan the trip with the fare, and drive there with turn-by-turn directions, speed limits, fuel prices and the weather on the way.</p>
       <span class="badge">Coming soon to the App Store</span>
-      <p class="langs">20 languages · English · 中文 · हिन्दी · ਪੰਜਾਬੀ · العربية · Tiếng Việt · and more</p>
+      <p class="langs" id="langs">20 languages · English · 中文 · हिन्दी · ਪੰਜਾਬੀ · العربية · Tiếng Việt · and more</p>
+      <script>
+      // The language line shows the visitor's own languages first (from the device), then the languages most spoken
+      // at home in the visitor's city (ABS Census 2021 order, by time zone; nothing is sent anywhere), then the rest.
+      (function(){
+        var L={en:"English",zh:"中文","zh-Hant":"繁體中文",hi:"हिन्दी",pa:"ਪੰਜਾਬੀ",ar:"العربية",vi:"Tiếng Việt",el:"Ελληνικά",it:"Italiano",fil:"Filipino",es:"Español",ne:"नेपाली",bn:"বাংলা",ur:"اردو",ta:"தமிழ்",ko:"한국어",ja:"日本語",id:"Bahasa Indonesia",fr:"Français",de:"Deutsch"};
+        var AREA={"Australia/Melbourne":["zh","vi","el","pa","it","ar","zh-Hant","hi"],"Australia/Sydney":["zh","ar","zh-Hant","vi","hi","el","ne","ko"],"Australia/Brisbane":["zh","vi","pa","zh-Hant","es","hi","ko"],"Australia/Perth":["zh","it","vi","pa","zh-Hant","fil"],"Australia/Adelaide":["zh","it","el","vi","pa","hi"],"Australia/Hobart":["ne","zh","pa"],"Australia/Darwin":["el","fil","ne","zh"],"Asia/Kolkata":["hi","bn","ta","pa","ur"],"Asia/Shanghai":["zh"],"Asia/Hong_Kong":["zh-Hant","zh"],"Asia/Taipei":["zh-Hant"],"Asia/Ho_Chi_Minh":["vi"],"Asia/Manila":["fil"],"Asia/Seoul":["ko"],"Asia/Tokyo":["ja"],"Asia/Jakarta":["id"],"Asia/Kathmandu":["ne"],"Asia/Dhaka":["bn"],"Asia/Karachi":["ur","pa"],"Europe/Athens":["el"],"Europe/Rome":["it"],"Europe/Paris":["fr"],"Europe/Berlin":["de"],"Europe/Madrid":["es"]};
+        function id(tag){tag=String(tag||"").toLowerCase();if(/^zh-(hk|tw|mo|hant)/.test(tag))return"zh-Hant";if(/^(fil|tl)\b/.test(tag))return"fil";if(/^in\b/.test(tag))return"id";var b=tag.split("-")[0];return L[b]?b:"";}
+        try{
+          var out=[],add=function(k){if(k&&L[k]&&out.indexOf(k)<0)out.push(k);};
+          (navigator.languages||[navigator.language]).forEach(function(t){add(id(t));});
+          add("en");
+          var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";
+          (AREA[tz]||[]).forEach(add);["zh","hi","pa","ar","vi"].forEach(add);
+          var el=document.getElementById("langs");
+          if(el)el.textContent="20 languages · "+out.slice(0,6).map(function(k){return L[k];}).join(" · ")+" · and more";
+        }catch(e){}
+      })();
+      </script>
     </div>
     <img class="shot" src="img/live-melbourne.jpg" width="375" height="812" alt="Wayaroo showing live trams, trains and buses moving through Melbourne's city centre">
   </section>
