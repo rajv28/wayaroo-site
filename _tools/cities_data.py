@@ -5,7 +5,7 @@ SNAP_ISO = "2026-11-13"
 SNAP_DAY = "13 November 2026"
 FARES_CHECKED = "2 November 2026"
 APP = "https://app.wayaroo.com/"
-STORE = "https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478"
+STORE = "https://apps.apple.com/app/wayaroo-maps-transport/id6831237478"
 
 CITIES = [
     dict(

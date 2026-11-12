@@ -1,6 +1,6 @@
 # Wayaroo
 
-> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The iPhone and iPad app is on the App Store (https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478, free). The web app is at https://app.wayaroo.com/ (free, no download). The Android app is in review at Google Play.
+> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The iPhone and iPad app is on the App Store (https://apps.apple.com/app/wayaroo-maps-transport/id6831237478, free). The web app is at https://app.wayaroo.com/ (free, no download). The Android app is in review at Google Play.
 
 ## What it does
 - Live buses, trains, trams and ferries on the map: Melbourne and regional Victoria (Transport Victoria feed), Sydney and NSW (Transport for NSW feeds, Sydney Ferries included), Brisbane, the Gold Coast, the Sunshine Coast and Cairns (Translink feed), Adelaide (Adelaide Metro feed), Canberra (Transport Canberra feed), and about 440 operators in 19 other countries (operators' open GTFS feeds; a vehicle's mode comes from the operator's timetable). Not live: Perth (timetable times only), Hobart, Darwin, New Zealand. Shows delay, next stops, "usually late" and "often full" at this time, nearest stops and wharves with next departures.
@@ -24,7 +24,7 @@
 - [Privacy](https://wayaroo.com/privacy.html) · [Terms](https://wayaroo.com/terms.html)
 
 ## Where to get it
-- iPhone and iPad: [Wayaroo: Maps & Transport on the App Store](https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478) (free).
+- iPhone and iPad: [Wayaroo: Maps & Transport on the App Store](https://apps.apple.com/app/wayaroo-maps-transport/id6831237478) (free).
 - Any phone or computer: https://app.wayaroo.com/ in the browser (free, no account).
 - Android: in review at Google Play.
 
