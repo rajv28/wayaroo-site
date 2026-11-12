@@ -1,12 +1,12 @@
 # Wayaroo
 
-> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The web app is live now at https://app.wayaroo.com/ (free, no download). The iPhone and Android apps are in store review.
+> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The iPhone and iPad app is on the App Store (https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478, free). The web app is at https://app.wayaroo.com/ (free, no download). The Android app is in review at Google Play.
 
 ## What it does
 - Live buses, trains, trams and ferries on the map: Melbourne and Victoria (Transport Victoria feed), Sydney and NSW (Transport for NSW feeds, Sydney Ferries included), hundreds of cities worldwide (operators' open GTFS feeds; a vehicle's mode comes from the operator's timetable). Shows delay, next stops, "usually late" and "often full" at this time, nearest stops and wharves with next departures.
 - Trip planner: Melbourne (own planner, Myki fares) and Sydney/NSW (Transport for NSW's planner, Opal fare estimate), with a connection check (spare minutes at each change), replacement-bus flags and a step-free option.
 - Directions by car, bike or foot: lane arrows, speed limit, school zones, speed humps, level-crossing wait, crash hotspots, long-light warnings, truck mode (height and weight limits), share-my-trip link, rain at destination.
-- Fuel: cheapest station within 5–30 km for your fuel type, whether the detour is worth it, and when to fill up from the local price cycle. Victoria's official Servo Saver prices plus driver-shared prices.
+- Fuel: cheapest station for your fuel type within the distance you choose, whether the detour is worth it, and when to fill up from the local price cycle. NSW Government FuelCheck prices plus driver-shared prices; Victoria's official Servo Saver prices are being connected.
 - Public toilets across Australia (National Public Toilet Map) with hours and accessibility, plus customer toilets in shops, libraries and servos.
 - Weather and air quality on the map (NOAA GFS), today's forecast, UV and clothing advice.
 - 20 languages: en, zh, zh-Hant, hi, pa, ar, vi, el, it, fil, es, ne, bn, ur, ta, ko, ja, id, fr, de.
@@ -21,6 +21,11 @@
 - [Support](https://wayaroo.com/support.html)
 - [Data credits and licences](https://wayaroo.com/credits.html)
 - [Privacy](https://wayaroo.com/privacy.html) · [Terms](https://wayaroo.com/terms.html)
+
+## Where to get it
+- iPhone and iPad: [Wayaroo: Maps & Transport on the App Store](https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478) (free).
+- Any phone or computer: https://app.wayaroo.com/ in the browser (free, no account).
+- Android: in review at Google Play.
 
 ## Facts
 - Publisher: Ozrsym Pty Ltd, Victoria, Australia. Contact: support@wayaroo.com
