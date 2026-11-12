@@ -3,7 +3,7 @@
 > Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The iPhone and iPad app is on the App Store (https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478, free). The web app is at https://app.wayaroo.com/ (free, no download). The Android app is in review at Google Play.
 
 ## What it does
-- Live buses, trains, trams and ferries on the map: Melbourne and Victoria (Transport Victoria feed), Sydney and NSW (Transport for NSW feeds, Sydney Ferries included), hundreds of cities worldwide (operators' open GTFS feeds; a vehicle's mode comes from the operator's timetable). Shows delay, next stops, "usually late" and "often full" at this time, nearest stops and wharves with next departures.
+- Live buses, trains, trams and ferries on the map: Melbourne and regional Victoria (Transport Victoria feed), Sydney and NSW (Transport for NSW feeds, Sydney Ferries included), Brisbane, the Gold Coast, the Sunshine Coast and Cairns (Translink feed), Adelaide (Adelaide Metro feed), Canberra (Transport Canberra feed), and about 440 operators in 19 other countries (operators' open GTFS feeds; a vehicle's mode comes from the operator's timetable). Not live: Perth (timetable times only), Hobart, Darwin, New Zealand. Shows delay, next stops, "usually late" and "often full" at this time, nearest stops and wharves with next departures.
 - Trip planner: Melbourne (own planner, Myki fares) and Sydney/NSW (Transport for NSW's planner, Opal fare estimate), with a connection check (spare minutes at each change), replacement-bus flags and a step-free option.
 - Directions by car, bike or foot: lane arrows, speed limit, school zones, speed humps, level-crossing wait, crash hotspots, long-light warnings, truck mode (height and weight limits), share-my-trip link, rain at destination.
 - Fuel: cheapest station for your fuel type within the distance you choose, whether the detour is worth it, and when to fill up from the local price cycle. NSW Government FuelCheck prices plus driver-shared prices; Victoria's official Servo Saver prices are being connected.
@@ -14,6 +14,7 @@
 ## Pages
 - [Home](https://wayaroo.com/)
 - [Live public transport](https://wayaroo.com/live-public-transport.html)
+- [Cities with live public transport](https://wayaroo.com/cities.html): [Melbourne](https://wayaroo.com/melbourne.html), [Sydney](https://wayaroo.com/sydney.html), [Brisbane](https://wayaroo.com/brisbane.html), [Gold Coast](https://wayaroo.com/gold-coast.html), [Adelaide](https://wayaroo.com/adelaide.html), [Canberra](https://wayaroo.com/canberra.html), [Cairns](https://wayaroo.com/cairns.html)
 - [Live ferry map](https://wayaroo.com/ferries.html)
 - [Fuel prices and when to fill up](https://wayaroo.com/fuel-prices.html)
 - [Driving: directions and warnings](https://wayaroo.com/driving.html)

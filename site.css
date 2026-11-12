@@ -50,3 +50,24 @@ nav .links a, footer a { display:inline-block; padding:12px 0; line-height:20px;
 
 .links a.open { background:var(--brand); color:#fff; padding:8px 14px; border-radius:10px; font-weight:700; text-decoration:none; }
 .hero .soon { font-size:15px; margin:12px 0 14px; opacity:.9; }
+
+/* City pages and cities.html (13 Nov 2026) */
+.tablewrap { overflow-x:auto; margin:8px 0 12px; }
+.facts { border-collapse:separate; border-spacing:0; width:100%; max-width:520px; background:var(--card); border:1px solid var(--line); border-radius:12px; }
+.facts.wide { max-width:none; }
+.facts th, .facts td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top; font-size:16px; }
+.facts th { font-size:14px; color:var(--muted); font-weight:600; }
+.facts tbody tr:last-child td { border-bottom:0; }
+ul.plain { padding-left:20px; }
+ul.plain li { margin:0 0 8px; }
+.badge.go { background:var(--brand); color:#fff; }
+.badge.alt2 { background:transparent; color:var(--brand); border:2px solid var(--brand); padding:10px 18px; }
+.feature.solo { grid-template-columns:1fr; }
+.facts .unit { display:none; }
+@media (max-width:640px) {
+  .facts.wide thead { display:none; }
+  .facts.wide tr { display:block; padding:12px 14px; border-bottom:1px solid var(--line); }
+  .facts.wide tbody tr:last-child { border-bottom:0; }
+  .facts.wide td { display:block; padding:1px 0; border:0; }
+  .facts.wide .unit { display:inline; }
+}
