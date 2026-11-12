@@ -25,15 +25,27 @@
 
   <h2>Share my trip</h2>
   <p>If you tap <b>Share my trip</b>, your position and expected arrival time are sent to the Wayaroo server about every 30 seconds and shown to anyone who opens your link. The link is random and private to the people you give it to. The server keeps this only in memory, never on disk, and forgets it when you end the trip or after 12 hours at the latest. Share the link only with people you trust.</p>
+  <p><b>Share this bus</b> (a school bus without live positions) works the same way from the phone of the adult on board who starts it: only the bus’s position is sent, about every 20 seconds while Wayaroo is open, with the route number as the link’s label. Nothing about anyone on board is sent or kept, and the share ends when it is stopped, when Wayaroo is closed, or after 3 hours at the latest.</p>
 
+  <h2>Family &amp; friends map</h2>
+  <p>Only if you start or join a group (More → Family &amp; friends map). The group sees the name you type and, while "Share my location" is on and Wayaroo is open, where you are about every 45 seconds. Positions are kept in memory for at most 2 hours and never saved; the group's names are saved so it still works tomorrow. There's no chat. Pause sharing or leave the group at any time; the group is deleted when its last member leaves.</p>
+  <h2>Helping other riders see your bus or train</h2>
+  <p>Off unless you turn it on (on the ride card, "Help other riders"). While Wayaroo is guiding you on a bus, train, tram or ferry, your phone sends its position and the line number about every 8 seconds, with a random number made for that ride only — no name, account or phone ID. We use it only to show that vehicle in the right place on the live map, keep it in memory for under a minute, and never save or log it. Tap "Stop" on the ride card to turn it off.</p>
   <h2>Things you tell other riders and drivers</h2>
   <p>When you tap <b>This one is full</b> on a vehicle, or type a fuel price you saw at the pump, Wayaroo stores what you reported (the route, stop or station, and the time) and uses it to help other people. It does not store your name or location with it. To stop abuse, a count of such reports per internet address is kept in memory for an hour, then dropped.</p>
 
   <h2>Trips, fuel spend and settings</h2>
   <p>Saved trips, your car's fuel use, language and map settings are kept in your browser on this device only. You can delete trips at any time in Spend, or clear them by clearing this site's data in your browser.</p>
 
+  <h2>How many people use Wayaroo</h2>
+  <p>Once a day the app tells the Wayaroo server one word (new, this week, regular or returned) and whether it is the app or the website. The server adds one to that day's total. It does not store an ID, your IP address or your location with it.</p>
+  <p>The server also counts how many searches and how many route plans it answers each day. It keeps the two totals only: not the words you searched for, not the places, not an ID and not your IP address.</p>
+  <h2>Traffic-light waiting times</h2>
+  <p>When you stop at a traffic light while driving, the app asks the Wayaroo server which light is at that position, to show how long people usually wait there. When you move again, the app sends how many seconds you waited, which light it was and the time band (for example weekday peak). The server keeps only the totals for each light. It does not store your name, an ID, your IP address or your trip with it.</p>
+  <h2>Map corrections</h2>
+  <p>When you tap <b>The map is wrong here</b> and send a note, Wayaroo sends your words and the place you chose to <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a> as a public map note, so volunteers can correct the map. The note is public and has no name on it. Do not write personal details in it. Wayaroo does not keep the note.</p>
   <h2>Reports you send</h2>
-  <p>When you report a pothole, hazard, faulty traffic light or wrong fuel price, Wayaroo stores the type, the place on the map, your optional note and the time. It is shown to other Wayaroo users and deleted after 14 days. Wayaroo does not store your name, account or IP address with a report (a scrambled form of the internet address is kept with points, only to stop people confirming their own reports). Please don't include personal details in notes.</p>
+  <p>When you report a pothole, hazard, faulty traffic light or wrong fuel price, Wayaroo stores the type, the place on the map and the time (for a fuel price, also the price), shows the report to other Wayaroo users and deletes it after 14 days. A report has no note or photo, so nothing anyone types is shown to others. Wayaroo does not store your name, account or IP address with a report (a scrambled form of the internet address is kept with points, only to stop people confirming their own reports).</p>
 
   <h2>Safe driving and savings scores</h2>
   <p>Safe driving scores and money-saved totals stay on your phone.</p>
@@ -43,6 +55,15 @@
   <h2>Parking timer</h2>
   <p>Where you parked, your time limit, price and note stay in your browser on this device. Wayaroo doesn't take payments; the links open the official parking apps, which have their own privacy policies.</p>
 
+  <h2>AI answers (off until you turn them on)</h2>
+  <p>In <b>Ask</b> you can switch on <b>AI answers</b>. Until you do, every question is worked out on your phone and nothing is sent anywhere. When it is on and you ask something Wayaroo doesn't already understand, your question and the facts on your screen (live vehicles, departures, weather, reports and works around the area you are looking at) are sent through the Wayaroo server to one AI provider, which writes a short answer from those facts only. If the question is about a trip you are planning or driving (for example by voice in the car), Wayaroo also sends that trip with it: the start, the destination, the route, where you are on it and your speed. The Ask screen names that provider before you switch it on: on the test server it is Thrift, software on the same computer as Wayaroo, which keeps the question there or passes it to a free online model depending on its own privacy setting; on the public server it is the free-tier provider named in the app. Wayaroo does not keep your questions or the answers, and never sends your account or contacts. It sends your exact position only as part of a trip question, as described above. Every answer is marked <b>✨ AI answer</b> with the provider's name, and it can be wrong, so check it before you rely on it.</p>
+  <h2>Your own AI (ChatGPT, Claude, Gemini, Grok or DeepSeek)</h2>
+  <p>In <b>Ask</b> you can also use an AI you already have. The app buttons copy your question and the facts on your screen and open that company's app or website, where you are signed in with your own account; Wayaroo sends nothing for this. If you instead paste an API key from one of these companies, the key is kept only on this phone (it is not in Wayaroo backups). Each question then goes with the key through the Wayaroo server to that company, which answers under its own terms and privacy policy and may charge your API account. The Wayaroo server does not store or log the key, your questions or the answers. Tap <b>Disconnect</b> to delete the key from the phone.</p>
+  <h2>You on the map</h2>
+  <p>The character that shows you on the map is worked out on your phone from its motion sensor and GPS speed (walking, cycling, driving and so on); nobody else sees it. If you give it your own face, a Memoji sticker or a photo, the picture is shrunk to a small square and kept only on your phone (and in a backup file if you save one). Wayaroo never uploads it.</p>
+  <h2>Partner links</h2>
+  <p>Some cards have buttons that open a partner's own app or website, for example <b>Uber</b> or <b>DiDi</b> to the destination of your trip, a car park booking site on a parking card, or tours and places to stay on a place's profile. Only what you tapped goes into the link (such as the destination), and only when you tap it; Wayaroo sends partners nothing else about you. Once you are on their app or site, their terms and privacy policy apply. Wayaroo counts how many times each partner button is tapped each day, with nothing about who tapped. Some of these links can earn Wayaroo a commission, and the card says so. Partner buttons never show while you are driving or navigating.</p>
+
   <h2>Other services</h2>
   <p>Your browser loads map images from OpenFreeMap and the map engine from unpkg, so those services see your internet address, like any website. The same goes for things you choose to open: traffic camera photos come straight from the road authority, radio plays straight from the station, NASA photos come from NASA, and 3D hills come from Amazon's open terrain tiles. Searches, routes, weather and other data are fetched by the Wayaroo server for you, so those providers see the Wayaroo server rather than you.</p>
 
@@ -51,7 +72,6 @@
   <p>If the iPhone or Android app also shows Google AdMob ads, they are set to non-personalised: Google doesn't use your activity to choose them and Wayaroo never asks to track you. Google may still collect device and usage information to show and measure ads; see <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's ad policies</a>.</p>
 
   <p><b>Google ads on the website wayaroo.com.</b> The pages of wayaroo.com (not the map at app.wayaroo.com and not the apps) can show Google AdSense ads. Google and its partners use cookies and your internet address to show and measure these ads, and can use them to show ads based on your earlier visits to this and other websites. You can switch personalised ads off at <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a>, and read how Google uses the data at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites that use its services</a>.</p>
-
   <h2>Contact and complaints</h2>
   <p>Questions, requests to see or delete information you sent (such as a report), or complaints: email <b>support@wayaroo.com</b>. If you're not happy with the answer you can contact the <a href="https://www.oaic.gov.au/" target="_blank" rel="noopener">Office of the Australian Information Commissioner</a>.</p>
 
