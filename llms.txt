@@ -1,6 +1,6 @@
 # Wayaroo
 
-> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. Coming to the App Store; the web version follows.
+> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The web app is live now at https://app.wayaroo.com/ (free, no download). The iPhone and Android apps are in store review.
 
 ## What it does
 - Live buses, trains, trams and ferries on the map: Melbourne and Victoria (Transport Victoria feed), Sydney and NSW (Transport for NSW feeds, Sydney Ferries included), hundreds of cities worldwide (operators' open GTFS feeds; a vehicle's mode comes from the operator's timetable). Shows delay, next stops, "usually late" and "often full" at this time, nearest stops and wharves with next departures.
