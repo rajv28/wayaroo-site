@@ -43,3 +43,6 @@ footer { border-top:1px solid var(--line); padding:24px 0 40px; color:var(--mute
 footer a { color:var(--muted); margin-right:16px; }
 /* Thumb-sized tap targets (44 px tall) for the header and footer links, 7 Nov 2026 (board QA). */
 nav .links a, footer a { display:inline-block; padding:12px 0; line-height:20px; }
+
+.links a.open { background:var(--brand); color:#fff; padding:8px 14px; border-radius:10px; font-weight:700; text-decoration:none; }
+.hero .soon { font-size:15px; margin:12px 0 14px; opacity:.9; }
