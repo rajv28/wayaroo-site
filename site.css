@@ -75,3 +75,7 @@ video { max-width:100%; }
   .facts.wide td { display:block; padding:1px 0; border:0; }
   .facts.wide .unit { display:inline; }
 }
+
+/* A WebP photo with a JPEG for old browsers (13 Nov 2026): the <picture> box must not change the layout. */
+picture { display: contents; }
+picture > source { display: none; }
