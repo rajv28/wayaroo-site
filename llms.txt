@@ -18,6 +18,7 @@
 - [Live ferry map](https://wayaroo.com/ferries.html)
 - [Fuel prices and when to fill up](https://wayaroo.com/fuel-prices.html)
 - [Driving: directions and warnings](https://wayaroo.com/driving.html)
+- [Caravan, motorhome and truck: the route checked for low bridges](https://wayaroo.com/caravan-truck.html)
 - [Public toilets](https://wayaroo.com/public-toilets.html)
 - [Support](https://wayaroo.com/support.html)
 - [Data credits and licences](https://wayaroo.com/credits.html)
@@ -31,5 +32,5 @@
 ## Facts
 - Publisher: Ozrsym Pty Ltd, Victoria, Australia. Contact: support@wayaroo.com
 - Price: free. No account. Settings stay on the phone.
-- No ads while driving or navigating.
+- No pop-ups or banners while driving or navigating.
 - Every data source is credited and used under a commercial-friendly licence.
