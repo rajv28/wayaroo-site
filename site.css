@@ -63,6 +63,10 @@ ul.plain li { margin:0 0 8px; }
 .badge.go { background:var(--brand); color:#fff; }
 .badge.alt2 { background:transparent; color:var(--brand); border:2px solid var(--brand); padding:10px 18px; }
 .feature.solo { grid-template-columns:1fr; }
+.feature.film { align-items:center; }
+.feature.film video.shot { height:auto; background:#0b1220; }
+.feature.film .muted { color:var(--muted); font-size:15px; }
+video { max-width:100%; }
 .facts .unit { display:none; }
 @media (max-width:640px) {
   .facts.wide thead { display:none; }
