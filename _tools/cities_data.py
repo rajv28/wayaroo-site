@@ -50,6 +50,7 @@ CITIES = [
         extras=[
             "<b>Ferries.</b> Every Sydney ferry on the harbour, with the next departures at your wharf. See the <a href=\"ferries.html\">live ferry map</a>.",
             "<b>Fuel prices.</b> The NSW Government's FuelCheck price of every station, the cheapest fuel for your fuel type, and when to fill up. See <a href=\"fuel-prices.html\">fuel prices</a>.",
+            "<b>Park&amp;Ride spaces.</b> Tap Parking to see how many spaces are free now at the Park&amp;Ride car parks (Transport for NSW, an estimate), and the car parks near you.",
             "<b>Your stop, in your language.</b> Wayaroo tells you when your stop is next, in 20 languages.",
         ],
         faq=[
@@ -178,6 +179,30 @@ CITIES = [
             ("Is there a live bus tracker for Cairns?", "Yes. Wayaroo shows the buses of Cairns moving on a map. It is free and needs no account."),
             ("Does it show when my bus comes?", "Yes. Open the For you tab to see your nearest stops with the next departures."),
             ("Where does the data come from?", "From Translink's open live feed, published by the Queensland Government. Wayaroo is independent and Translink does not endorse it. Always check the sign at the stop."),
+        ],
+    ),
+    dict(
+        slug="kumamoto", name="Kumamoto", region="Kumamoto Prefecture, Japan", country="Japan", view=(130.7100, 32.8000, 13.0),
+        snap="Saturday 14 November 2026 at 5:45 pm (Kumamoto time)", snap_iso="2026-11-14", snap_day="14 November 2026",
+        title="Kumamoto live bus map (熊本 バス) | Wayaroo",
+        desc="See the buses of Kumamoto (熊本) move on a live map: four bus companies on one map, with the next stops and how late each bus is. Free, no account, in English and Japanese.",
+        h1="Kumamoto buses, live on one map",
+        lede="Wayaroo shows the buses of Kumamoto (熊本) moving on the map, from the open live data of four bus companies: Kumamoto City Bus (熊本都市バス), Sanko Bus (産交バス), Kumamoto Electric Railway Bus (熊本電鉄バス) and Kumamoto Bus (熊本バス). Tap a bus to see its route, where it is going, its next stops and how late it is.",
+        counts=[("buses", 199)],
+        also="By company: Sanko Bus 106, Kumamoto City Bus 48, Kumamoto Electric Railway Bus 29 and Kumamoto Bus 16.",
+        source="each bus company's open GTFS-JP and GTFS-Realtime data (Kumamoto City Bus, Kumamoto Bus and Sanko Bus: CC BY 4.0)",
+        operator="The bus companies", endorse="The bus companies do not run or endorse it.",
+        stop="Kumamoto Station (熊本駅前)",
+        plan="In Japan, Wayaroo plans the trip by car, bike or on foot, and shows the live buses with their next stops. Trip plans by public transport are in Victoria and New South Wales only, for now.",
+        fare="",
+        extras=[
+            "<b>In Japanese.</b> Wayaroo works in Japanese (日本語) and 19 other languages. Stop and route names show as the bus companies write them.",
+            "<b>How late, stop by stop.</b> The next stops show the predicted time from the bus company's own data.",
+        ],
+        faq=[
+            ("Is there a live bus map of Kumamoto?", "Yes. Wayaroo shows the buses of four Kumamoto bus companies moving on one map. It is free and needs no account. Open it in a browser or get the iPhone app."),
+            ("Can I see how late my bus is?", "Yes. Tap the bus. Wayaroo shows its next stops with the predicted times from the bus company's data."),
+            ("Where does the data come from?", "From the open data that Kumamoto City Bus, Sanko Bus, Kumamoto Electric Railway Bus and Kumamoto Bus publish. Wayaroo is independent and the bus companies do not endorse it. Always check the sign at the stop."),
         ],
     ),
 ]

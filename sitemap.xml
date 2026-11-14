@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://wayaroo.com/</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://wayaroo.com/live-public-transport.html</loc><lastmod>2026-11-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://wayaroo.com/cities.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wayaroo.com/cities.html</loc><lastmod>2026-11-14</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wayaroo.com/melbourne.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wayaroo.com/sydney.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wayaroo.com/brisbane.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -10,6 +10,7 @@
   <url><loc>https://wayaroo.com/adelaide.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wayaroo.com/canberra.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wayaroo.com/cairns.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wayaroo.com/kumamoto.html</loc><lastmod>2026-11-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wayaroo.com/ferries.html</loc><lastmod>2026-11-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wayaroo.com/fuel-prices.html</loc><lastmod>2026-11-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wayaroo.com/driving.html</loc><lastmod>2026-11-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>

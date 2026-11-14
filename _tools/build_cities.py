@@ -24,6 +24,7 @@ NAV = '''  <nav>
 FOOT = '''  <footer>
     <p>Wayaroo™ is published by Ozrsym Pty Ltd (ABN 56 671 004 390), Victoria, Australia. Contact: <a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
     <p><a href="index.html">Home</a><a href="cities.html">Cities</a><a href="live-public-transport.html">Live transport</a><a href="fuel-prices.html">Fuel prices</a><a href="driving.html">Driving</a><a href="public-toilets.html">Public toilets</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="credits.html">Data credits</a></p>
+    <p>Follow Wayaroo: <a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a></p>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>'''
 CTA = f'''  <section class="cta">
@@ -82,11 +83,12 @@ def city_page(c):
     has_img = (ROOT / img).exists()
     image = img if has_img else "img/live-melbourne.jpg"
     total = sum(v for _, v in c["counts"])
+    snap, snap_iso, snap_day = c.get("snap", SNAP), c.get("snap_iso", SNAP_ISO), c.get("snap_day", SNAP_DAY)
     ld = {
         "@context": "https://schema.org",
         "@graph": [
             {"@type": "WebPage", "name": c["h1"], "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
-             "about": {"@id": "https://wayaroo.com/#app"}, "primaryImageOfPage": f"https://wayaroo.com/{image}", "inLanguage": "en-AU", "dateModified": SNAP_ISO},
+             "about": {"@id": "https://wayaroo.com/#app"}, "primaryImageOfPage": f"https://wayaroo.com/{image}", "inLanguage": "en-AU", "dateModified": snap_iso},
             {"@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Wayaroo", "item": "https://wayaroo.com/"},
                 {"@type": "ListItem", "position": 2, "name": "Cities", "item": "https://wayaroo.com/cities.html"},
@@ -94,7 +96,11 @@ def city_page(c):
             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c["faq"]]},
         ],
     }
-    shot = f'\n    <img class="shot" src="{img}" width="375" height="815" alt="Live public transport moving on the map of {E(c["name"])} in Wayaroo, on {SNAP_DAY}">' if has_img else ""
+    shot_img = f'<img class="shot" src="{img}" width="375" height="815" alt="Live public transport moving on the map of {E(c["name"])} in Wayaroo, on {snap_day}">'
+    webp = f"img/city-{c['slug']}.webp"
+    if has_img and (ROOT / webp).exists():  # WebP first, the JPEG for old browsers and link previews (site commit 3638f73)
+        shot_img = f'<picture><source srcset="{webp}" type="image/webp">{shot_img}</picture>'
+    shot = f"\n    {shot_img}" if has_img else ""
     rows = "".join(f"<tr><td>{E(label[0].upper() + label[1:])}</td><td>{n(v)}</td></tr>" for label, v in c["counts"])
     fare = (f'\n  <p><b>The fare deal Wayaroo shows here:</b> {E(c["fare"])} <span class="note">(checked on {FARES_CHECKED}; the app links to the source.)</span></p>' if c["fare"] else "")
     also = f"\n  <p>{E(c['also'])}</p>" if c["also"] else ""
@@ -113,7 +119,7 @@ def city_page(c):
   </section>
 
   <h2>What was on the map</h2>
-  <p>On {SNAP}, Wayaroo showed {n(total)} vehicles in {E(c["name"])}: {join_counts(c["counts"])}.</p>
+  <p>On {snap}, Wayaroo showed {n(total)} vehicles in {E(c["name"])}: {join_counts(c["counts"])}.</p>
   <div class="tablewrap"><table class="facts"><thead><tr><th>Live on the map</th><th>Vehicles at that time</th></tr></thead><tbody>{rows}</tbody></table></div>{also}
   <p class="note">The numbers change through the day. Source: {E(c["source"])}.</p>
 
@@ -134,7 +140,7 @@ def city_page(c):
 {CTA}
 
   <p>Other cities: {others} · <a href="cities.html">all cities</a></p>
-  <p class="note">Wayaroo is an independent app from Ozrsym Pty Ltd. {E(c["operator"])} does not run or endorse it. Live positions and times come from the operator's feed. They can be late or wrong. Always check the sign at the stop. Full list of sources: <a href="credits.html">data credits</a>.</p>
+  <p class="note">Wayaroo is an independent app from Ozrsym Pty Ltd. {E(c.get("endorse") or c["operator"] + " does not run or endorse it.")} Live positions and times come from the operator's feed. They can be late or wrong. Always check the sign at the stop. Full list of sources: <a href="credits.html">data credits</a>.</p>
 
 {FOOT}
 </div>
@@ -171,13 +177,18 @@ WORLD = [
 def cities_page():
     path = "cities.html"
     title = "Cities with live public transport on the map | Wayaroo"
-    desc = "Where Wayaroo shows buses, trains, trams and ferries live: Melbourne, Sydney, Brisbane, Gold Coast, Adelaide, Canberra, Cairns and 19 other countries."
+    desc = "Where Wayaroo shows buses, trains, trams and ferries live: Melbourne, Sydney, Brisbane, Gold Coast, Adelaide, Canberra, Cairns, Kumamoto and 19 other countries."
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Cities with live public transport in Wayaroo", "url": f"https://wayaroo.com/{path}",
           "isPartOf": {"@id": "https://wayaroo.com/#website"}, "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "en-AU", "dateModified": SNAP_ISO}
     rows = ""
-    for c in CITIES:
+    for c in [x for x in CITIES if x.get("country", "Australia") == "Australia"]:
         live = ", ".join(label[0].upper() + label[1:] if i == 0 else label for i, (label, _) in enumerate(c["counts"]))
         rows += f'<tr><td><a href="{c["slug"]}.html"><b>{E(c["name"])}</b></a><br><span class="note">{E(c["region"])}</span></td><td>{E(live)}</td><td>{n(sum(v for _, v in c["counts"]))}<span class="unit"> vehicles</span></td><td><a href="{view_link(c)}">Open the map</a></td></tr>'
+    far = [x for x in CITIES if x.get("country", "Australia") != "Australia"]
+    far_rows = "".join(f'<tr><td><a href="{c["slug"]}.html"><b>{E(c["name"])}</b></a><br><span class="note">{E(c["region"])}</span></td><td>{E(join_counts(c["counts"]))}</td><td>{E(c.get("snap", SNAP))}</td></tr>' for c in far)
+    far_html = (f'''
+  <h3>City pages in other countries</h3>
+  <div class="tablewrap"><table class="facts wide"><thead><tr><th>City</th><th>Live on the map</th><th>Checked</th></tr></thead><tbody>{far_rows}</tbody></table></div>''' if far else "")
     total_world = sum(x[1] for x in WORLD)
     world = "".join(f"<tr><td><b>{E(country)}</b></td><td>{k}<span class=\"unit\"> {'operator' if k == 1 else 'operators'}</span></td><td>{E(ex)}</td></tr>" for country, k, ex in WORLD)
     body = f'''
@@ -199,7 +210,7 @@ def cities_page():
 
   <h2>Other countries</h2>
   <p>Outside Australia, Wayaroo reads the open live feeds of about {round(total_world, -1)} transport operators in {len(WORLD)} countries. Wayaroo checks each feed, and shows a city only when its feed sent vehicles in the last two weeks.</p>
-  <div class="tablewrap"><table class="facts wide"><thead><tr><th>Country</th><th>Operators</th><th>For example</th></tr></thead><tbody>{world}</tbody></table></div>
+  <div class="tablewrap"><table class="facts wide"><thead><tr><th>Country</th><th>Operators</th><th>For example</th></tr></thead><tbody>{world}</tbody></table></div>{far_html}
   <p class="note">Checked on 13 November 2026. The list changes each week.</p>
   <p><a class="badge go" href="{APP}?view=15,35,1.8&layers=transitcities&modes=rtbf">Open the world map of cities with live vehicles</a></p>
 
