@@ -125,7 +125,7 @@ def city_page(c):
 
   <h2>What you can do</h2>
   <ul class="plain">
-    <li><b>See your ride now.</b> Tap a vehicle to see its route, where it is going, its next stops and, when the operator sends a prediction, how late it is.</li>
+    <li><b>See your ride now.</b> {c.get("see") or "Tap a vehicle to see its route, where it is going, its next stops and, when the operator sends a prediction, how late it is."}</li>
     <li><b>Follow it.</b> "Ride along" keeps the map on one vehicle.</li>{extras}
   </ul>
 
@@ -177,7 +177,7 @@ WORLD = [
 def cities_page():
     path = "cities.html"
     title = "Cities with live public transport on the map | Wayaroo"
-    desc = "Where Wayaroo shows buses, trains, trams and ferries live: Melbourne, Sydney, Brisbane, Gold Coast, Adelaide, Canberra, Cairns, Kumamoto and 19 other countries."
+    desc = "Where Wayaroo shows buses, trains, trams and ferries live: Melbourne, Sydney, Brisbane, Gold Coast, Adelaide, Canberra, Cairns, Kumamoto, Toyama and 19 other countries."
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Cities with live public transport in Wayaroo", "url": f"https://wayaroo.com/{path}",
           "isPartOf": {"@id": "https://wayaroo.com/#website"}, "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "en-AU", "dateModified": SNAP_ISO}
     rows = ""
