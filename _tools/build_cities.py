@@ -544,24 +544,23 @@ def city_page_tr(c, key):
     return path
 
 
+# Counted on 15 Nov 2026 from the app's feed list: feeds that sent vehicles at least once and that the app shows
+# (lib/worldtransit.mjs HIDDEN_FEEDS, lists 1 to 3, are out). France has the 4 French networks that the catalogue files
+# under Germany and Belgium; India is the Delhi feed. Count again when a hidden feed comes back.
 WORLD = [
-    ("United States", 148, "King County Metro (Seattle), MBTA (Boston), SEPTA (Philadelphia), MARTA (Atlanta), RTD (Denver), Capital Metro (Austin), Metro Transit (Minneapolis–Saint Paul), VIA (San Antonio), Valley Metro (Phoenix), the Long Island Rail Road and NYC Ferry"),
-    ("France", 146, "Bordeaux (TBM), Montpellier (TaM), Nice (Lignes d'Azur), Rennes (STAR), Rouen (Astuce), Toulon (Mistral), Angers (Irigo), Brest (Bibus), Dijon (Divia), Metz (Le Met'), Tours (Fil Bleu), Le Havre (LiA), and networks on Réunion and Martinique"),
-    ("Canada", 50, "Edmonton, Halifax, York Region, Mississauga (MiWay), Hamilton, Durham Region, Guelph, Kingston, Thunder Bay, and more than 30 BC Transit systems (Victoria, Kelowna, Kamloops, Nanaimo, Whistler)"),
-    ("Japan", 48, "Toyama (trams and buses), Takaoka (Manyosen tram), Kumamoto (four bus companies), Mie Kotsu buses, Nagano and Aomori city buses"),
-    ("Italy", 18, "Rome, Turin (GTT), Venice (ACTV buses and water buses), Bari (AMTAB), Tuscany (Autolinee Toscane), Modena, Reggio Emilia and Piacenza (SETA), Parma (TEP), Padua (Busitalia Veneto), Lazio (Cotral)"),
-    ("Poland", 8, "Warsaw, Kraków, Poznań, Szczecin, Rzeszów and Ełk"),
-    ("Spain", 7, "Renfe Cercanías commuter trains, Metro Bilbao, Málaga (EMT), Córdoba (AUCORSA) and Fuenlabrada"),
-    ("Romania", 4, "the Bucharest region, Cluj-Napoca, Iași and Buzău"),
+    ("France", 145, "Bordeaux (TBM), Montpellier (TaM), Nice (Lignes d'Azur), Rouen (Astuce), Toulon (Mistral), Angers (Irigo), Brest (Bibus), Dijon (Divia), Metz (Le Met'), Tours (Fil Bleu), Le Havre (LiA), and networks on Réunion and Martinique"),
+    ("United States", 137, "King County Metro (Seattle), MBTA (Boston), SEPTA (Philadelphia), MARTA (Atlanta), Capital Metro (Austin), Metro Transit (Minneapolis–Saint Paul), Valley Metro (Phoenix), the Long Island Rail Road and NYC Ferry"),
+    ("Japan", 52, "Toyama (trams and buses), Takaoka (Manyosen tram), Kumamoto (four bus companies), Mie Kotsu buses, Nagano and Aomori city buses"),
+    ("Canada", 49, "Edmonton, Halifax, York Region, Mississauga (MiWay), Hamilton, Guelph, Kingston, Thunder Bay, and more than 30 BC Transit systems (Victoria, Kelowna, Kamloops, Nanaimo, Whistler)"),
+    ("Poland", 4, "Warsaw, Poznań, Szczecin and Ełk"),
+    ("Spain", 4, "Renfe Cercanías commuter trains, Metro Bilbao and Málaga (EMT)"),
     ("Sweden and Norway", 3, "Vy and Go-Ahead services"),
-    ("Portugal", 2, "Lisbon (Carris and Carris Metropolitana)"),
+    ("Italy", 2, "Rome and Turin (GTT)"),
     ("Ukraine", 2, "Kyiv and Lviv"),
+    ("Portugal", 1, "the Lisbon region (Carris Metropolitana)"),
     ("Czechia", 1, "Prague (PID)"),
     ("Finland", 1, "Helsinki (HSL)"),
-    ("Lithuania", 1, "Vilnius"),
     ("Bulgaria", 1, "Sofia"),
-    ("Hungary", 1, "Orosháza"),
-    ("Moldova", 1, "Chișinău"),
     ("Sri Lanka", 1, "Colombo (Lanka Metro Transit)"),
     ("India", 1, "Delhi buses"),
 ]
@@ -604,7 +603,7 @@ def cities_page():
   <h2>Other countries</h2>
   <p>Outside Australia, Wayaroo reads the open live feeds of about {round(total_world, -1)} transport operators in {len(WORLD)} countries. Wayaroo checks each feed, and shows a city only when its feed sent vehicles in the last two weeks.</p>
   <div class="tablewrap"><table class="facts wide"><thead><tr><th>Country</th><th>Operators</th><th>For example</th></tr></thead><tbody>{world}</tbody></table></div>{far_html}
-  <p class="note">Checked on 13 November 2026. The list changes each week.</p>
+  <p class="note">Checked on 15 November 2026. The list changes each week.</p>
   <p><a class="badge go" href="{APP}?view=15,35,1.8&layers=transitcities&modes=rtbf">Open the world map of cities with live vehicles</a></p>
 
 {CTA}
