@@ -278,7 +278,7 @@ WORLD = [
 def cities_page():
     path = "cities.html"
     title = "Cities with live public transport on the map | Wayaroo"
-    desc = "Where Wayaroo shows buses, trains, trams and ferries live: Melbourne, Sydney, Brisbane, Gold Coast, Adelaide, Canberra, Cairns, Kumamoto, Toyama, Mie, Edmonton, Victoria (BC), Halifax and 19 other countries."
+    desc = "Where Wayaroo shows buses, trains, trams and ferries live: Australian cities, Kumamoto, Toyama and Mie in Japan, Edmonton, Victoria and Halifax in Canada."
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Cities with live public transport in Wayaroo", "url": f"https://wayaroo.com/{path}",
           "isPartOf": {"@id": "https://wayaroo.com/#website"}, "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "en-AU", "dateModified": SNAP_ISO}
     rows = ""
