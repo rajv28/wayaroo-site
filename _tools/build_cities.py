@@ -606,13 +606,13 @@ def cities_page():
 
   <h2>Australia</h2>
   <div class="tablewrap"><table class="facts wide"><thead><tr><th>City</th><th>Live on the map</th><th>Vehicles</th><th></th></tr></thead><tbody>{rows}</tbody></table></div>
-  <p class="note">Vehicles on the map on {SNAP}. The numbers change through the day. Regional Victoria (Geelong, Ballarat, Bendigo), Newcastle, Wollongong and the Sunshine Coast are live too: they are on the pages of Melbourne, Sydney and Brisbane.</p>
+  <p class="note">Vehicles on the map on {SNAP}. The numbers change through the day. Regional Victoria (Geelong, Ballarat, Bendigo), Newcastle and Wollongong are live too: they are on the pages of Melbourne and Sydney.</p>
 
   <h3>Not live yet</h3>
   <ul class="plain">
     <li><b>Perth:</b> Wayaroo shows stops and timetable times. There are no live positions, because Wayaroo has no open live feed for Perth.</li>
     <li><b>Hobart and Darwin:</b> no live positions yet.</li>
-    <li><b>Queensland (Brisbane, Gold Coast, Sunshine Coast, Cairns, Townsville):</b> paused since 16 November 2026. Translink's open-data terms ask for an indemnity, and Wayaroo has asked Translink for permission without it.</li>
+    <li><b>Queensland (Brisbane, Gold Coast, Sunshine Coast, Cairns, Townsville):</b> paused since 16 November 2026. Translink's open-data terms ask for an indemnity, which Wayaroo does not give. Queensland comes back if Translink allows the use without it.</li>
     <li><b>New Zealand:</b> no live positions yet.</li>
   </ul>
   <p class="note">Everywhere in Australia, Wayaroo also gives directions by car, bike or on foot, public toilets, the weather and places near you.</p>
@@ -639,16 +639,16 @@ def cities_page():
 
 PAUSE_EN = ("Since 16 November 2026, Wayaroo does not show Translink's buses, trains, trams and ferries in Queensland. Translink's "
             "open-data terms ask each app to give the State a release and indemnity, and to ask the same of its users. Wayaroo does "
-            "not give that promise, so it has asked Translink for permission to use the data without it.")
+            "not give that promise. Queensland comes back on the map if Translink allows the use of its data without it.")
 PAUSE_ZH = ("自 2026 年 11 月 16 日起，Wayaroo 不再显示昆士兰州 Translink 的公交车、火车、电车和渡轮。Translink 的开放数据条款要求每个应用"
-            "向州政府作出免责和赔偿承诺，并要求其用户也作出同样的承诺。Wayaroo 不作出这一承诺，因此已向 Translink 申请在没有该条款的情况下使用数据的许可。")
+            "向州政府作出免责和赔偿承诺，并要求其用户也作出同样的承诺。Wayaroo 不作出这一承诺，如果 Translink 允许在没有该条款的情况下使用其数据，昆士兰州将重新显示在地图上。")
 
 
 def paused_page(c):
     """A city whose operator's data Wayaroo does not show now (PAUSED)."""
     path = f"{c['slug']}.html"
     title = f"{c['name']}: live public transport paused | Wayaroo"
-    desc = f"Live buses, trains and ferries in {c['name']} are paused in Wayaroo while Wayaroo asks Translink for permission. Directions, toilets and the weather still work."
+    desc = f"Live buses, trains and ferries in {c['name']} are paused in Wayaroo: Translink's terms ask for an indemnity. Directions, toilets and the weather still work."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
           "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "en-AU", "dateModified": "2026-11-16"}
     body = f'''
@@ -674,7 +674,7 @@ def paused_page_zh(c):
     path = f"{c['slug']}-zh.html"
     name = c["zh"]["name"]
     title = f"{name}：实时公共交通已暂停 | Wayaroo"
-    desc = f"Wayaroo 暂停显示{name}的实时公交、火车和渡轮，正在向 Translink 申请许可。导航、厕所和天气仍可使用。"
+    desc = f"Wayaroo 暂停显示{name}的实时公交、火车和渡轮，因为 Translink 的条款要求赔偿承诺。导航、厕所和天气仍可使用。"
     ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
           "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "zh-Hans", "dateModified": "2026-11-16"}
     body = f'''
