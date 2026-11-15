@@ -14,6 +14,8 @@
 - EV chargers: power (kW), plug types, number of charging points and price where known; a filter for fast (50 kW+) or ultra-fast (150 kW+) chargers and for the car's plug (CCS, CHAdeMO, Type 2, Type 1, Tesla/NACS); chargers along the route in navigation. Sources: Victorian Government (DEECA), Open Charge Map (open-licence providers only), OpenStreetMap. Chargers for e-bikes, scooters and boats are left out.
 - Public toilets across Australia (National Public Toilet Map) with hours and accessibility, plus customer toilets in shops, libraries and servos.
 - Weather and air quality on the map (NOAA GFS), today's forecast, UV and clothing advice.
+- Move (Profile → Move): records walks, runs and bike rides with the phone's GPS (distance, time, pace or speed, climb, calories), per-kilometre splits, best efforts (400 m to marathon running, 5 to 100 km riding), weekly goals, weeks in a row, an estimate of fitness, fatigue and form, a voice for each kilometre, a height chart, 3D replay, a picture to share and GPX export. No account; activities stay on the phone.
+- Budget (Profile → Budget): payments typed in by hand or a bank statement file (CSV) sorted into categories, monthly budgets, regular payments and subscriptions with the next date, the bills due before the next pay and an estimate of what is left to spend. No bank login; transactions stay on the phone. Estimates, not financial advice.
 - 20 languages: en, zh, zh-Hant, hi, pa, ar, vi, el, it, fil, es, ne, bn, ur, ta, ko, ja, id, fr, de.
 
 ## Pages
@@ -25,6 +27,8 @@
 - [Driving: directions and warnings](https://wayaroo.com/driving.html)
 - [Caravan, motorhome and truck: the route checked for low bridges](https://wayaroo.com/caravan-truck.html)
 - [Public toilets](https://wayaroo.com/public-toilets.html)
+- [Run, walk and ride tracker](https://wayaroo.com/run-walk-ride-tracker.html)
+- [Budget tracker that stays on the phone](https://wayaroo.com/budget-tracker.html)
 - [Support](https://wayaroo.com/support.html)
 - [Data credits and licences](https://wayaroo.com/credits.html)
 - [Privacy](https://wayaroo.com/privacy.html) · [Terms](https://wayaroo.com/terms.html)
