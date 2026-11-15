@@ -548,18 +548,16 @@ def city_page_tr(c, key):
 # (lib/worldtransit.mjs HIDDEN_FEEDS, lists 1 to 3, are out). France has the 4 French networks that the catalogue files
 # under Germany and Belgium; India is the Delhi feed. Count again when a hidden feed comes back.
 WORLD = [
-    ("France", 145, "Bordeaux (TBM), Montpellier (TaM), Nice (Lignes d'Azur), Rouen (Astuce), Toulon (Mistral), Angers (Irigo), Brest (Bibus), Dijon (Divia), Metz (Le Met'), Tours (Fil Bleu), Le Havre (LiA), and networks on Réunion and Martinique"),
-    ("United States", 137, "King County Metro (Seattle), MBTA (Boston), SEPTA (Philadelphia), MARTA (Atlanta), Capital Metro (Austin), Metro Transit (Minneapolis–Saint Paul), Valley Metro (Phoenix), the Long Island Rail Road and NYC Ferry"),
+    ("France", 146, "Bordeaux (TBM), Rennes (STAR), Montpellier (TaM), Nice (Lignes d'Azur), Rouen (Astuce), Toulon (Mistral), Angers (Irigo), Brest (Bibus), Dijon (Divia), Metz (Le Met'), Tours (Fil Bleu), Le Havre (LiA), and networks on Réunion and Martinique"),
+    ("United States", 125, "King County Metro (Seattle), MARTA (Atlanta), Valley Metro (Phoenix), the Long Island Rail Road, GoDurham and Chapel Hill Transit (North Carolina)"),
     ("Japan", 52, "Toyama (trams and buses), Takaoka (Manyosen tram), Kumamoto (four bus companies), Mie Kotsu buses, Nagano and Aomori city buses"),
-    ("Canada", 49, "Edmonton, Halifax, York Region, Mississauga (MiWay), Hamilton, Guelph, Kingston, Thunder Bay, and more than 30 BC Transit systems (Victoria, Kelowna, Kamloops, Nanaimo, Whistler)"),
+    ("Canada", 49, "Edmonton, Halifax, York Region, Hamilton, Guelph, Kingston, Thunder Bay, Durham Region, Waterloo Region (Grand River Transit), and more than 30 BC Transit systems (Victoria, Kelowna, Kamloops, Nanaimo, Whistler)"),
     ("Poland", 4, "Warsaw, Poznań, Szczecin and Ełk"),
     ("Spain", 4, "Renfe Cercanías commuter trains, Metro Bilbao and Málaga (EMT)"),
     ("Sweden and Norway", 3, "Vy and Go-Ahead services"),
-    ("Italy", 2, "Rome and Turin (GTT)"),
-    ("Ukraine", 2, "Kyiv and Lviv"),
+    ("Ukraine", 1, "Kyiv"),
     ("Portugal", 1, "the Lisbon region (Carris Metropolitana)"),
     ("Czechia", 1, "Prague (PID)"),
-    ("Finland", 1, "Helsinki (HSL)"),
     ("Bulgaria", 1, "Sofia"),
     ("Sri Lanka", 1, "Colombo (Lanka Metro Transit)"),
     ("India", 1, "Delhi buses"),
