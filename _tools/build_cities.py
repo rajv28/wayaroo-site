@@ -49,11 +49,14 @@ def view_link(c, zoom=None):
 
 def og_image(image):
     # A link card on a social site wants a wide picture (1200 x 630); the tall phone picture is cut badly.
-    return "img/share-card.jpg" if image in ("img/live-melbourne.jpg", "img/share-card.jpg") else image
+    if image in ("img/live-melbourne.jpg", "img/share-card.jpg"):
+        return "img/share-card.jpg"
+    wide = image.replace("img/city-", "img/share-")  # a wide card of the city, when there is one
+    return wide if image.startswith("img/city-") and (ROOT / wide).exists() else image
 
 
 def og_size(image):
-    return '\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">' if og_image(image) == "img/share-card.jpg" else ""
+    return '\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">' if og_image(image).startswith("img/share-") else ""
 
 
 def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
