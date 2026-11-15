@@ -80,7 +80,7 @@ def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
 
 # A city's pages in other languages: (key of its block in cities_data.py, file suffix, hreflang, link label).
 # A city can carry several blocks (ja, zh); each makes <slug>-<suffix>.html. The English page stays the default.
-LANGS = [("ja", "ja", "ja", "日本語"), ("zh", "zh", "zh-Hans", "中文")]
+LANGS = [("ja", "ja", "ja", "日本語"), ("zh", "zh", "zh-Hans", "中文"), ("hi", "hi", "hi", "हिन्दी"), ("pa", "pa", "pa", "ਪੰਜਾਬੀ"), ("vi", "vi", "vi", "Tiếng Việt")]
 
 
 def lang_alts(c):
@@ -366,6 +366,184 @@ def city_page_zh(c):
     return path
 
 
+TR_FOOT_LINKS = ["index.html", "cities.html", "live-public-transport.html", "fuel-prices.html", "driving.html", "public-toilets.html", "support.html", "privacy.html", "terms.html", "credits.html"]
+FOLLOW = '<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.instagram.com/wayaroo/" rel="me noopener">Instagram</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a>'
+
+# Page words for the Hindi, Punjabi and Vietnamese city pages (15 Nov 2026). App labels as the app's own
+# strings write them (public/js/lang/hi.json, pa.json, vi.json: foryou, ride_along).
+TR = {
+    "hi": dict(
+        nav=["लाइव ट्रांसपोर्ट", "ईंधन", "ड्राइविंग", "टॉयलेट", "सहायता", "ऐप खोलें"],
+        foot_pub="Wayaroo™ को Ozrsym Pty Ltd (ABN 56 671 004 390), विक्टोरिया, ऑस्ट्रेलिया प्रकाशित करता है। संपर्क:",
+        foot_links=["होम", "शहर", "लाइव ट्रांसपोर्ट", "ईंधन की कीमतें", "ड्राइविंग", "सार्वजनिक टॉयलेट", "सहायता", "गोपनीयता", "शर्तें", "डेटा स्रोत"],
+        follow="Wayaroo को फ़ॉलो करें:",
+        cta_b="Wayaroo को App Store से डाउनलोड करें, या अपने ब्राउज़र में इस्तेमाल करें।",
+        cta_note="मुफ़्त, कोई अकाउंट नहीं, 20 भाषाएँ (हिन्दी समेत)। iPhone और iPad के लिए। Android ऐप Google Play पर समीक्षा में है।",
+        cta_store="App Store से डाउनलोड करें", cta_web="ब्राउज़र में खोलें",
+        cities="शहरों की सूची", open_map="{name} का लाइव मैप खोलें", get_app="iPhone ऐप डाउनलोड करें",
+        free_note="मुफ़्त। कोई अकाउंट नहीं। आपके ब्राउज़र में खुलता है।",
+        h_map="मैप पर क्या दिख रहा था", sentence="{snap}, Wayaroo ने {name} में मैप पर कुल {total} वाहन दिखाए ({listed})।", sep=", ",
+        th=["प्रकार", "उस समय वाहन"], numbers="वाहनों की संख्या दिन भर बदलती रहती है। स्रोत: {source}।",
+        h_do="आप क्या कर सकते हैं", see_b="अपनी सवारी अभी देखें।",
+        see="किसी वाहन पर टैप करें और उसका रूट, वह कहाँ जा रहा है, उसके अगले स्टॉप और, जब ऑपरेटर अनुमान भेजता है, वह कितनी देर से है, देखें।",
+        follow_b="उसे फ़ॉलो करें।", follow_t="“साथ चलें” चुनें, मैप एक ही वाहन पर बना रहता है।",
+        h_plan="यात्रा प्लान करें", fare_b="Wayaroo यहाँ जो किराया छूट दिखाता है:", fare_note="(जाँच की तारीख़: {date}; ऐप में स्रोत का लिंक है।)",
+        h_faq="लोग क्या पूछते हैं", free_q="क्या Wayaroo मुफ़्त है?", free_a="हाँ। Wayaroo मुफ़्त है और इसके लिए कोई अकाउंट नहीं चाहिए। आपकी सेटिंग्स आपके फ़ोन पर ही रहती हैं।",
+        list_en="शहरों की सूची (अंग्रेज़ी में)",
+        disclaimer="Wayaroo, Ozrsym Pty Ltd का एक स्वतंत्र ऐप है। {endorse} वाहनों की जगह और समय ऑपरेटर के डेटा से आते हैं और देर से या गलत हो सकते हैं। स्टॉप पर लगा बोर्ड ज़रूर देखें। सभी स्रोतों की पूरी सूची: <a href=\"credits.html\">डेटा स्रोत</a> (अंग्रेज़ी में)।",
+        alt="{name} का सार्वजनिक परिवहन Wayaroo के मैप पर लाइव चलता हुआ ({snap_day})",
+        months=["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"], date="{d} {m} {y}",
+    ),
+    "pa": dict(
+        nav=["ਲਾਈਵ ਟਰਾਂਸਪੋਰਟ", "ਬਾਲਣ", "ਡਰਾਈਵਿੰਗ", "ਟਾਇਲਟ", "ਸਹਾਇਤਾ", "ਐਪ ਖੋਲ੍ਹੋ"],
+        foot_pub="Wayaroo™ ਨੂੰ Ozrsym Pty Ltd (ABN 56 671 004 390), ਵਿਕਟੋਰੀਆ, ਆਸਟ੍ਰੇਲੀਆ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦੀ ਹੈ। ਸੰਪਰਕ:",
+        foot_links=["ਮੁੱਖ ਪੰਨਾ", "ਸ਼ਹਿਰ", "ਲਾਈਵ ਟਰਾਂਸਪੋਰਟ", "ਬਾਲਣ ਦੀਆਂ ਕੀਮਤਾਂ", "ਡਰਾਈਵਿੰਗ", "ਜਨਤਕ ਟਾਇਲਟ", "ਸਹਾਇਤਾ", "ਪਰਦੇਦਾਰੀ", "ਸ਼ਰਤਾਂ", "ਡੇਟਾ ਸਰੋਤ"],
+        follow="Wayaroo ਨੂੰ ਫ਼ਾਲੋ ਕਰੋ:",
+        cta_b="Wayaroo ਨੂੰ App Store ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ, ਜਾਂ ਆਪਣੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਵਰਤੋ।",
+        cta_note="ਮੁਫ਼ਤ, ਕੋਈ ਖਾਤਾ ਨਹੀਂ, 20 ਭਾਸ਼ਾਵਾਂ (ਪੰਜਾਬੀ ਸਮੇਤ)। iPhone ਅਤੇ iPad ਲਈ। Android ਐਪ Google Play 'ਤੇ ਸਮੀਖਿਆ ਅਧੀਨ ਹੈ।",
+        cta_store="App Store ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ", cta_web="ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੋਲ੍ਹੋ",
+        cities="ਸ਼ਹਿਰਾਂ ਦੀ ਸੂਚੀ", open_map="{name} ਦਾ ਲਾਈਵ ਨਕਸ਼ਾ ਖੋਲ੍ਹੋ", get_app="iPhone ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ",
+        free_note="ਮੁਫ਼ਤ। ਕੋਈ ਖਾਤਾ ਨਹੀਂ। ਤੁਹਾਡੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੁੱਲ੍ਹਦਾ ਹੈ।",
+        h_map="ਨਕਸ਼ੇ 'ਤੇ ਕੀ ਦਿਖ ਰਿਹਾ ਸੀ", sentence="{snap}, Wayaroo ਨੇ {name} ਵਿੱਚ ਨਕਸ਼ੇ 'ਤੇ ਕੁੱਲ {total} ਵਾਹਨ ਦਿਖਾਏ ({listed})।", sep=", ",
+        th=["ਕਿਸਮ", "ਉਸ ਸਮੇਂ ਵਾਹਨ"], numbers="ਵਾਹਨਾਂ ਦੀ ਗਿਣਤੀ ਦਿਨ ਭਰ ਬਦਲਦੀ ਰਹਿੰਦੀ ਹੈ। ਸਰੋਤ: {source}।",
+        h_do="ਤੁਸੀਂ ਕੀ ਕਰ ਸਕਦੇ ਹੋ", see_b="ਆਪਣੀ ਸਵਾਰੀ ਹੁਣੇ ਵੇਖੋ।",
+        see="ਕਿਸੇ ਵਾਹਨ 'ਤੇ ਟੈਪ ਕਰੋ ਅਤੇ ਉਸਦਾ ਰੂਟ, ਉਹ ਕਿੱਥੇ ਜਾ ਰਿਹਾ ਹੈ, ਉਸਦੇ ਅਗਲੇ ਸਟਾਪ ਅਤੇ, ਜਦੋਂ ਆਪਰੇਟਰ ਅਨੁਮਾਨ ਭੇਜਦਾ ਹੈ, ਉਹ ਕਿੰਨਾ ਲੇਟ ਹੈ, ਵੇਖੋ।",
+        follow_b="ਉਸਨੂੰ ਫ਼ਾਲੋ ਕਰੋ।", follow_t="“ਨਾਲ ਚੱਲੋ” ਚੁਣੋ, ਨਕਸ਼ਾ ਇੱਕੋ ਵਾਹਨ 'ਤੇ ਟਿਕਿਆ ਰਹਿੰਦਾ ਹੈ।",
+        h_plan="ਯਾਤਰਾ ਦੀ ਯੋਜਨਾ ਬਣਾਓ", fare_b="Wayaroo ਇੱਥੇ ਜੋ ਕਿਰਾਇਆ ਛੋਟ ਦਿਖਾਉਂਦਾ ਹੈ:", fare_note="(ਜਾਂਚ ਦੀ ਤਾਰੀਖ਼: {date}; ਐਪ ਵਿੱਚ ਸਰੋਤ ਦਾ ਲਿੰਕ ਹੈ।)",
+        h_faq="ਲੋਕ ਕੀ ਪੁੱਛਦੇ ਹਨ", free_q="ਕੀ Wayaroo ਮੁਫ਼ਤ ਹੈ?", free_a="ਹਾਂ। Wayaroo ਮੁਫ਼ਤ ਹੈ ਅਤੇ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਚਾਹੀਦਾ। ਤੁਹਾਡੀਆਂ ਸੈਟਿੰਗਾਂ ਤੁਹਾਡੇ ਫ਼ੋਨ 'ਤੇ ਹੀ ਰਹਿੰਦੀਆਂ ਹਨ।",
+        list_en="ਸ਼ਹਿਰਾਂ ਦੀ ਸੂਚੀ (ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ)",
+        disclaimer="Wayaroo, Ozrsym Pty Ltd ਦੀ ਇੱਕ ਸੁਤੰਤਰ ਐਪ ਹੈ। {endorse} ਵਾਹਨਾਂ ਦੀ ਥਾਂ ਅਤੇ ਸਮਾਂ ਆਪਰੇਟਰ ਦੇ ਡੇਟਾ ਤੋਂ ਆਉਂਦੇ ਹਨ ਅਤੇ ਲੇਟ ਜਾਂ ਗਲਤ ਹੋ ਸਕਦੇ ਹਨ। ਸਟਾਪ 'ਤੇ ਲੱਗਿਆ ਬੋਰਡ ਜ਼ਰੂਰ ਵੇਖੋ। ਸਾਰੇ ਸਰੋਤਾਂ ਦੀ ਪੂਰੀ ਸੂਚੀ: <a href=\"credits.html\">ਡੇਟਾ ਸਰੋਤ</a> (ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ)।",
+        alt="{name} ਦੀ ਜਨਤਕ ਆਵਾਜਾਈ Wayaroo ਦੇ ਨਕਸ਼ੇ 'ਤੇ ਲਾਈਵ ਚੱਲਦੀ ਹੋਈ ({snap_day})",
+        months=["ਜਨਵਰੀ", "ਫ਼ਰਵਰੀ", "ਮਾਰਚ", "ਅਪ੍ਰੈਲ", "ਮਈ", "ਜੂਨ", "ਜੁਲਾਈ", "ਅਗਸਤ", "ਸਤੰਬਰ", "ਅਕਤੂਬਰ", "ਨਵੰਬਰ", "ਦਸੰਬਰ"], date="{d} {m} {y}",
+    ),
+    "vi": dict(
+        nav=["Giao thông trực tiếp", "Nhiên liệu", "Lái xe", "Nhà vệ sinh", "Hỗ trợ", "Mở ứng dụng"],
+        foot_pub="Wayaroo™ do Ozrsym Pty Ltd (ABN 56 671 004 390), Victoria, Úc phát hành. Liên hệ:",
+        foot_links=["Trang chủ", "Thành phố", "Giao thông trực tiếp", "Giá nhiên liệu", "Lái xe", "Nhà vệ sinh công cộng", "Hỗ trợ", "Quyền riêng tư", "Điều khoản", "Nguồn dữ liệu"],
+        follow="Theo dõi Wayaroo:",
+        cta_b="Tải Wayaroo trên App Store, hoặc dùng ngay trong trình duyệt.",
+        cta_note="Miễn phí, không cần tài khoản, 20 ngôn ngữ (có tiếng Việt). Cho iPhone và iPad. Ứng dụng Android đang được Google Play xét duyệt.",
+        cta_store="Tải trên App Store", cta_web="Mở trong trình duyệt",
+        cities="Danh sách thành phố", open_map="Mở bản đồ trực tiếp {name}", get_app="Tải ứng dụng iPhone",
+        free_note="Miễn phí. Không cần tài khoản. Mở ngay trong trình duyệt.",
+        h_map="Trên bản đồ lúc đó", sentence="{snap}, Wayaroo hiển thị {total} xe ở {name} trên bản đồ ({listed}).", sep=", ",
+        th=["Loại", "Số xe lúc đó"], numbers="Số xe thay đổi trong ngày. Nguồn: {source}.",
+        h_do="Bạn có thể làm gì", see_b="Xem xe của bạn ngay bây giờ.",
+        see="Chạm vào một xe để xem tuyến, nơi xe đang đến, các trạm kế tiếp và, khi nhà vận hành gửi dự báo, xe trễ bao lâu.",
+        follow_b="Theo dõi xe.", follow_t="Chọn “Đi cùng xe”, bản đồ sẽ luôn theo một xe.",
+        h_plan="Lên kế hoạch chuyến đi", fare_b="Ưu đãi giá vé Wayaroo hiển thị ở đây:", fare_note="(kiểm tra {date}; ứng dụng có liên kết đến nguồn.)",
+        h_faq="Câu hỏi thường gặp", free_q="Wayaroo có miễn phí không?", free_a="Có. Wayaroo miễn phí và không cần tài khoản. Cài đặt của bạn được lưu trên điện thoại của bạn.",
+        list_en="Danh sách thành phố (tiếng Anh)",
+        disclaimer="Wayaroo là ứng dụng độc lập của Ozrsym Pty Ltd. {endorse} Vị trí và giờ của xe lấy từ dữ liệu của nhà vận hành và có thể chậm hoặc sai. Hãy luôn xem bảng thông tin tại trạm. Danh sách đầy đủ các nguồn: <a href=\"credits.html\">nguồn dữ liệu</a> (tiếng Anh).",
+        alt="Phương tiện công cộng ở {name} di chuyển trực tiếp trên bản đồ Wayaroo ({snap_day})",
+        months=[str(i) for i in range(1, 13)], date="ngày {d} tháng {m} năm {y}", thou=".",
+    ),
+}
+
+
+def tr_date(key, d):
+    """'2 November 2026' in the page's language."""
+    day, month, year = d.split()
+    w = TR[key]
+    return w["date"].format(d=int(day), m=w["months"][_MONTHS[month] - 1], y=year)
+
+
+def city_page_tr(c, key):
+    """A city page in Hindi, Punjabi or Vietnamese, from the city's block of that language: the English page's numbers."""
+    w, z = TR[key], c[key]
+    hl = next(h for k, _, h, _ in LANGS if k == key)
+    path = f"{c['slug']}-{key}.html"
+    img = f"img/city-{c['slug']}.jpg"
+    has_img = (ROOT / img).exists()
+    image = img if has_img else "img/live-melbourne.jpg"
+    counts = [(z["labels"][label], v) for label, v in c["counts"]]
+    total = sum(v for _, v in counts)
+    snap_iso = c.get("snap_iso", SNAP_ISO)
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "WebPage", "name": z["h1"], "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
+             "about": {"@id": "https://wayaroo.com/#app"}, "primaryImageOfPage": f"https://wayaroo.com/{image}", "inLanguage": hl, "dateModified": snap_iso},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Wayaroo", "item": "https://wayaroo.com/"},
+                {"@type": "ListItem", "position": 2, "name": w["cities"], "item": "https://wayaroo.com/cities.html"},
+                {"@type": "ListItem", "position": 3, "name": z["name"], "item": f"https://wayaroo.com/{path}"}]},
+            {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in z["faq"]]},
+        ],
+    }
+    shot_img = f'<img class="shot" src="{img}" width="375" height="815" alt="{E(w["alt"].format(name=z["name"], snap_day=z["snap_day"]))}">'
+    webp = f"img/city-{c['slug']}.webp"
+    if has_img and (ROOT / webp).exists():
+        shot_img = f'<picture><source srcset="{webp}" type="image/webp">{shot_img}</picture>'
+    shot = f"\n    {shot_img}" if has_img else ""
+    nn = lambda x: n(x).replace(",", w.get("thou", ","))  # 1.996 in Vietnamese, 1,996 elsewhere
+    rows = "".join(f"<tr><td>{E(label)}</td><td>{nn(v)}</td></tr>" for label, v in counts)
+    listed = w["sep"].join(f"{E(label)} {nn(v)}" for label, v in counts)
+    also = f"\n  <p>{E(z['also'])}</p>" if z.get("also") else ""
+    fare = (f'\n  <p><b>{E(w["fare_b"])}</b> {E(z["fare"])} <span class="note">{E(w["fare_note"].format(date=tr_date(key, FARES_CHECKED)))}</span></p>' if z.get("fare") else "")
+    extras = "".join(f"\n    <li>{x}</li>" for x in z["extras"])
+    faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in z["faq"])
+    nav_links = "".join(f'<a href="{u}">{E(t)}</a>' for u, t in zip(["live-public-transport.html", "fuel-prices.html", "driving.html", "public-toilets.html", "support.html"], w["nav"][:5]))
+    nav = f'''  <nav>
+    <a class="brand" href="index.html"><img src="icon.svg" alt="">Wayaroo</a>
+    <div class="links">{nav_links}<a class="open" href="https://app.wayaroo.com/">{E(w["nav"][5])}</a></div>
+  </nav>'''
+    foot_links = "".join(f'<a href="{u}">{E(t)}</a>' for u, t in zip(TR_FOOT_LINKS, w["foot_links"]))
+    foot = f'''  <footer>
+    <p>{E(w["foot_pub"])} <a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
+    <p>{foot_links}</p>
+    <p>{E(w["follow"])} {FOLLOW}</p>
+    <p>© 2026 Ozrsym Pty Ltd</p>
+  </footer>'''
+    cta = f'''  <section class="cta">
+    <div><b>{E(w["cta_b"])}</b><br><span class="note">{E(w["cta_note"])}</span></div>
+    <span class="ctabtns"><a class="badge" href="{STORE}">{E(w["cta_store"])}</a><a class="badge alt" href="{APP}">{E(w["cta_web"])}</a></span>
+  </section>'''
+    sentence = E(w["sentence"]).format(snap=E(z["snap"]), name=E(z["name"]), total=nn(total), listed=listed)
+    body = f"""
+  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">{E(w["cities"])}</a> › {E(z["name"])} · <a href="{c["slug"]}.html" lang="en" hreflang="en">English</a></p>
+  <section class="feature{'' if has_img else ' solo'}">
+    <div>
+      <h1>{E(z["h1"])}</h1>
+      <p>{E(z["lede"])}</p>
+      <p><span class="ctabtns"><a class="badge go" href="{view_link(c)}">{E(w["open_map"].format(name=z["name"]))}</a><a class="badge alt2" href="{STORE}">{E(w["get_app"])}</a></span></p>
+      <p class="note">{E(w["free_note"])}</p>
+    </div>{shot}
+  </section>
+
+  <h2>{E(w["h_map"])}</h2>
+  <p>{sentence}</p>
+  <div class="tablewrap"><table class="facts"><thead><tr><th>{E(w["th"][0])}</th><th>{E(w["th"][1])}</th></tr></thead><tbody>{rows}</tbody></table></div>{also}
+  <p class="note">{E(w["numbers"].format(source=z["source"]))}</p>
+
+  <h2>{E(w["h_do"])}</h2>
+  <ul class="plain">
+    <li><b>{E(w["see_b"])}</b> {E(z.get("see") or w["see"])}</li>
+    <li><b>{E(w["follow_b"])}</b> {E(w["follow_t"])}</li>{extras}
+  </ul>
+
+  <h2>{E(w["h_plan"])}</h2>
+  <p>{E(z["plan"])}</p>{fare}
+
+  <section class="faq">
+    <h2>{E(w["h_faq"])}</h2>{faq}
+    <details><summary>{E(w["free_q"])}</summary><p>{E(w["free_a"])}</p></details>
+  </section>
+
+{cta}
+
+  <p><a href="cities.html">{E(w["list_en"])}</a></p>
+  <p class="note">{w["disclaimer"].format(endorse=E(z["endorse"]))}</p>
+
+{foot}
+</div>
+</body>
+</html>
+"""
+    (ROOT / path).write_text(head(z["title"], z["desc"], path, image, ld, lang=hl, alts=lang_alts(c), nav=nav) + body, encoding="utf-8")
+    return path
+
+
 WORLD = [
     ("United States", 148, "King County Metro (Seattle), MBTA (Boston), SEPTA (Philadelphia), MARTA (Atlanta), RTD (Denver), Capital Metro (Austin), Metro Transit (Minneapolis–Saint Paul), VIA (San Antonio), Valley Metro (Phoenix), the Long Island Rail Road and NYC Ferry"),
     ("France", 146, "Bordeaux (TBM), Montpellier (TaM), Nice (Lignes d'Azur), Rennes (STAR), Rouen (Astuce), Toulon (Mistral), Angers (Irigo), Brest (Bibus), Dijon (Divia), Metz (Le Met'), Tours (Fil Bleu), Le Havre (LiA), and networks on Réunion and Martinique"),
@@ -443,5 +621,5 @@ def cities_page():
 
 
 if __name__ == "__main__":
-    made = [city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [city_page_zh(c) for c in CITIES if c.get("zh")] + [cities_page()]
+    made = [city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [city_page_zh(c) for c in CITIES if c.get("zh")] + [city_page_tr(c, k) for k in TR for c in CITIES if c.get(k)] + [cities_page()]
     print("wrote", ", ".join(made))

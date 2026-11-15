@@ -441,3 +441,89 @@ CITIES = [
         ],
     ),
 ]
+
+
+# Melbourne in Hindi, Punjabi and Vietnamese (15 Nov 2026): the same facts as the English entry above
+# (its counts are used for the numbers). App labels as the app's own strings write them.
+_MEL = next(c for c in CITIES if c["slug"] == "melbourne")
+_MEL["hi"] = dict(
+    name="मेलबर्न",
+    title="मेलबर्न लाइव ट्रेन, ट्राम और बस मैप | Wayaroo",
+    desc="मेलबर्न की ट्रेनें, ट्राम और बसें लाइव मैप पर चलती देखें: आपकी सवारी अभी कहाँ है, कितनी देर से है और आपके स्टॉप से अगली रवानगी। मुफ़्त, कोई अकाउंट नहीं।",
+    h1="मेलबर्न की ट्रेनें, ट्राम और बसें, एक ही मैप पर लाइव",
+    lede="Wayaroo, ट्रांसपोर्ट विक्टोरिया (Transport Victoria) के अपने लाइव डेटा से, मेलबर्न की चलती ट्रेनें, ट्राम और बसें मैप पर दिखाता है। किसी पर भी टैप करें और देखें कि वह कहाँ जा रही है, कितनी देर से है और उसके अगले स्टॉप कौन-से हैं।",
+    snap="13 नवंबर 2026 (शुक्रवार) को, मेलबर्न समय के अनुसार सुबह 9:00 बजे",
+    snap_day="13 नवंबर 2026",
+    labels={"trains": "ट्रेनें", "trams": "ट्राम", "buses": "बसें"},
+    also="यही डेटा क्षेत्रीय विक्टोरिया को भी कवर करता है। उसी समय Wayaroo ने जीलॉन्ग (Geelong) में 79, बैलरेट (Ballarat) में 38 और बेंडिगो (Bendigo) में 30 वाहन दिखाए।",
+    source="ट्रांसपोर्ट विक्टोरिया (Transport Victoria, GTFS-Realtime, CC BY 4.0)",
+    plan="Wayaroo के अपने प्लानर से ट्रेन, ट्राम और बस की यात्रा प्लान करें, साथ में कार, साइकिल और पैदल के विकल्प भी। हर यात्रा में Myki किराया (पूरा और रियायती) और हर बदलाव पर बचे हुए मिनट दिखते हैं।",
+    fare="विक्टोरिया की ट्रेनों, ट्राम और बसों में 2026 के अंत तक आधा किराया (पूरा दैनिक किराया $5.70)। 18 साल से कम उम्र वाले मुफ़्त यात्रा करते हैं।",
+    extras=[
+        "<b>अक्सर देर से, अक्सर भरी हुई।</b> Wayaroo लाइव डेटा से सीखता है कि हर रूट, हफ़्ते के उसी समय, हर स्टॉप पर आमतौर पर कितनी देर से चलता है। यात्री भरी हुई ट्राम या बस को चिह्नित कर सकते हैं।",
+        "<b>रेलवे फाटक।</b> गाड़ी चलाते समय Wayaroo आगे आने वाले रेलवे फाटक (लेवल क्रॉसिंग) की चेतावनी देता है।",
+        "<b>स्कूल ज़ोन और स्पीड लिमिट।</b> विक्टोरिया के स्पीड ज़ोन; स्कूल ज़ोन सिर्फ़ स्कूल वाले दिनों में।",
+        "<b>थंडरस्टॉर्म अस्थमा।</b> अक्टूबर से दिसंबर तक Wayaroo आपके ज़िले का आधिकारिक जोखिम स्तर दिखाता है।",
+    ],
+    faq=[
+        ("क्या मेलबर्न की ट्राम का कोई लाइव मैप है?", "हाँ। Wayaroo मेलबर्न की ट्राम, ट्रेनें और बसें एक ही मैप पर चलती हुई दिखाता है। यह मुफ़्त है और इसके लिए कोई अकाउंट नहीं चाहिए। इसे ब्राउज़र में खोलें या iPhone ऐप डाउनलोड करें।"),
+        ("अगली ट्राम कब आएगी, यह कैसे देखें?", "“आपके लिए” टैब खोलें। सबसे ऊपर आपके सबसे पास के स्टॉप होते हैं, और हर स्टॉप की अगली रवानगी मिनटों में दिखती है। किसी रवानगी पर टैप करें और उस ट्राम को मैप पर फ़ॉलो करें।"),
+        ("क्या Wayaroo Myki किराया दिखाता है?", "हाँ। विक्टोरिया में ट्रिप प्लानर हर यात्रा का Myki किराया दिखाता है, पूरा और रियायती। यह अभी लागू किराया नियम भी दिखाता है।"),
+        ("डेटा कहाँ से आता है?", "ट्रांसपोर्ट विक्टोरिया के खुले लाइव डेटा से (CC BY 4.0)। वाहनों की जगह आमतौर पर एक मिनट से कम पुरानी होती है। यह देर से या गलत भी हो सकती है, इसलिए स्टॉप पर लगा बोर्ड ज़रूर देखें।"),
+    ],
+    endorse="ट्रांसपोर्ट विक्टोरिया इस ऐप को नहीं चलाता और न ही इसका समर्थन करता है।",
+)
+_MEL["pa"] = dict(
+    name="ਮੈਲਬਰਨ",
+    title="ਮੈਲਬਰਨ ਲਾਈਵ ਰੇਲ, ਟਰਾਮ ਅਤੇ ਬੱਸ ਨਕਸ਼ਾ | Wayaroo",
+    desc="ਮੈਲਬਰਨ ਦੀਆਂ ਰੇਲਾਂ, ਟਰਾਮਾਂ ਅਤੇ ਬੱਸਾਂ ਲਾਈਵ ਨਕਸ਼ੇ 'ਤੇ ਚੱਲਦੀਆਂ ਵੇਖੋ: ਤੁਹਾਡੀ ਸਵਾਰੀ ਹੁਣ ਕਿੱਥੇ ਹੈ, ਕਿੰਨੀ ਲੇਟ ਹੈ ਅਤੇ ਤੁਹਾਡੇ ਸਟਾਪ ਤੋਂ ਅਗਲੀ ਰਵਾਨਗੀ। ਮੁਫ਼ਤ, ਕੋਈ ਖਾਤਾ ਨਹੀਂ।",
+    h1="ਮੈਲਬਰਨ ਦੀਆਂ ਰੇਲਾਂ, ਟਰਾਮਾਂ ਅਤੇ ਬੱਸਾਂ, ਇੱਕੋ ਨਕਸ਼ੇ 'ਤੇ ਲਾਈਵ",
+    lede="Wayaroo, ਟਰਾਂਸਪੋਰਟ ਵਿਕਟੋਰੀਆ (Transport Victoria) ਦੇ ਆਪਣੇ ਲਾਈਵ ਡੇਟਾ ਤੋਂ, ਮੈਲਬਰਨ ਦੀਆਂ ਚੱਲਦੀਆਂ ਰੇਲਾਂ, ਟਰਾਮਾਂ ਅਤੇ ਬੱਸਾਂ ਨਕਸ਼ੇ 'ਤੇ ਦਿਖਾਉਂਦਾ ਹੈ। ਕਿਸੇ ਉੱਤੇ ਵੀ ਟੈਪ ਕਰੋ ਅਤੇ ਵੇਖੋ ਕਿ ਉਹ ਕਿੱਥੇ ਜਾ ਰਹੀ ਹੈ, ਕਿੰਨੀ ਲੇਟ ਹੈ ਅਤੇ ਉਸਦੇ ਅਗਲੇ ਸਟਾਪ ਕਿਹੜੇ ਹਨ।",
+    snap="13 ਨਵੰਬਰ 2026 (ਸ਼ੁੱਕਰਵਾਰ) ਨੂੰ, ਮੈਲਬਰਨ ਸਮੇਂ ਅਨੁਸਾਰ ਸਵੇਰੇ 9:00 ਵਜੇ",
+    snap_day="13 ਨਵੰਬਰ 2026",
+    labels={"trains": "ਰੇਲਾਂ", "trams": "ਟਰਾਮਾਂ", "buses": "ਬੱਸਾਂ"},
+    also="ਇਹੀ ਡੇਟਾ ਖੇਤਰੀ ਵਿਕਟੋਰੀਆ ਨੂੰ ਵੀ ਕਵਰ ਕਰਦਾ ਹੈ। ਉਸੇ ਸਮੇਂ Wayaroo ਨੇ ਜੀਲੌਂਗ (Geelong) ਵਿੱਚ 79, ਬੈਲਰੈਟ (Ballarat) ਵਿੱਚ 38 ਅਤੇ ਬੈਂਡਿਗੋ (Bendigo) ਵਿੱਚ 30 ਵਾਹਨ ਦਿਖਾਏ।",
+    source="ਟਰਾਂਸਪੋਰਟ ਵਿਕਟੋਰੀਆ (Transport Victoria, GTFS-Realtime, CC BY 4.0)",
+    plan="Wayaroo ਦੇ ਆਪਣੇ ਪਲੈਨਰ ਨਾਲ ਰੇਲ, ਟਰਾਮ ਅਤੇ ਬੱਸ ਦੀ ਯਾਤਰਾ ਦੀ ਯੋਜਨਾ ਬਣਾਓ, ਨਾਲ ਹੀ ਕਾਰ, ਸਾਈਕਲ ਅਤੇ ਪੈਦਲ ਦੇ ਵਿਕਲਪ ਵੀ। ਹਰ ਯਾਤਰਾ ਵਿੱਚ Myki ਕਿਰਾਇਆ (ਪੂਰਾ ਅਤੇ ਰਿਆਇਤੀ) ਅਤੇ ਹਰ ਬਦਲੀ 'ਤੇ ਬਚੇ ਮਿੰਟ ਦਿਖਦੇ ਹਨ।",
+    fare="ਵਿਕਟੋਰੀਆ ਦੀਆਂ ਰੇਲਾਂ, ਟਰਾਮਾਂ ਅਤੇ ਬੱਸਾਂ ਵਿੱਚ 2026 ਦੇ ਅੰਤ ਤੱਕ ਅੱਧਾ ਕਿਰਾਇਆ (ਪੂਰਾ ਰੋਜ਼ਾਨਾ ਕਿਰਾਇਆ $5.70)। 18 ਸਾਲ ਤੋਂ ਘੱਟ ਉਮਰ ਵਾਲੇ ਮੁਫ਼ਤ ਸਫ਼ਰ ਕਰਦੇ ਹਨ।",
+    extras=[
+        "<b>ਅਕਸਰ ਲੇਟ, ਅਕਸਰ ਭਰੀ ਹੋਈ।</b> Wayaroo ਲਾਈਵ ਡੇਟਾ ਤੋਂ ਸਿੱਖਦਾ ਹੈ ਕਿ ਹਰ ਰੂਟ, ਹਫ਼ਤੇ ਦੇ ਉਸੇ ਸਮੇਂ, ਹਰ ਸਟਾਪ 'ਤੇ ਆਮ ਤੌਰ 'ਤੇ ਕਿੰਨਾ ਲੇਟ ਚੱਲਦਾ ਹੈ। ਸਵਾਰੀਆਂ ਭਰੀ ਹੋਈ ਟਰਾਮ ਜਾਂ ਬੱਸ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰ ਸਕਦੀਆਂ ਹਨ।",
+        "<b>ਰੇਲਵੇ ਫਾਟਕ।</b> ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ Wayaroo ਅੱਗੇ ਆਉਣ ਵਾਲੇ ਰੇਲਵੇ ਫਾਟਕ (ਲੈਵਲ ਕ੍ਰਾਸਿੰਗ) ਦੀ ਚੇਤਾਵਨੀ ਦਿੰਦਾ ਹੈ।",
+        "<b>ਸਕੂਲ ਜ਼ੋਨ ਅਤੇ ਸਪੀਡ ਲਿਮਿਟ।</b> ਵਿਕਟੋਰੀਆ ਦੇ ਸਪੀਡ ਜ਼ੋਨ; ਸਕੂਲ ਜ਼ੋਨ ਸਿਰਫ਼ ਸਕੂਲ ਵਾਲੇ ਦਿਨਾਂ ਵਿੱਚ।",
+        "<b>ਥੰਡਰਸਟੌਰਮ ਦਮਾ।</b> ਅਕਤੂਬਰ ਤੋਂ ਦਸੰਬਰ ਤੱਕ Wayaroo ਤੁਹਾਡੇ ਜ਼ਿਲ੍ਹੇ ਦਾ ਸਰਕਾਰੀ ਖ਼ਤਰਾ ਪੱਧਰ ਦਿਖਾਉਂਦਾ ਹੈ।",
+    ],
+    faq=[
+        ("ਕੀ ਮੈਲਬਰਨ ਦੀਆਂ ਟਰਾਮਾਂ ਦਾ ਕੋਈ ਲਾਈਵ ਨਕਸ਼ਾ ਹੈ?", "ਹਾਂ। Wayaroo ਮੈਲਬਰਨ ਦੀਆਂ ਟਰਾਮਾਂ, ਰੇਲਾਂ ਅਤੇ ਬੱਸਾਂ ਇੱਕੋ ਨਕਸ਼ੇ 'ਤੇ ਚੱਲਦੀਆਂ ਦਿਖਾਉਂਦਾ ਹੈ। ਇਹ ਮੁਫ਼ਤ ਹੈ ਅਤੇ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਚਾਹੀਦਾ। ਇਸਨੂੰ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੋਲ੍ਹੋ ਜਾਂ iPhone ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ।"),
+        ("ਅਗਲੀ ਟਰਾਮ ਕਦੋਂ ਆਵੇਗੀ, ਇਹ ਕਿਵੇਂ ਵੇਖਾਂ?", "“ਤੁਹਾਡੇ ਲਈ” ਟੈਬ ਖੋਲ੍ਹੋ। ਸਭ ਤੋਂ ਉੱਪਰ ਤੁਹਾਡੇ ਸਭ ਤੋਂ ਨੇੜਲੇ ਸਟਾਪ ਹੁੰਦੇ ਹਨ, ਅਤੇ ਹਰ ਸਟਾਪ ਦੀ ਅਗਲੀ ਰਵਾਨਗੀ ਮਿੰਟਾਂ ਵਿੱਚ ਦਿਖਦੀ ਹੈ। ਕਿਸੇ ਰਵਾਨਗੀ 'ਤੇ ਟੈਪ ਕਰੋ ਅਤੇ ਉਸ ਟਰਾਮ ਨੂੰ ਨਕਸ਼ੇ 'ਤੇ ਫ਼ਾਲੋ ਕਰੋ।"),
+        ("ਕੀ Wayaroo Myki ਕਿਰਾਇਆ ਦਿਖਾਉਂਦਾ ਹੈ?", "ਹਾਂ। ਵਿਕਟੋਰੀਆ ਵਿੱਚ ਟ੍ਰਿਪ ਪਲੈਨਰ ਹਰ ਯਾਤਰਾ ਦਾ Myki ਕਿਰਾਇਆ ਦਿਖਾਉਂਦਾ ਹੈ, ਪੂਰਾ ਅਤੇ ਰਿਆਇਤੀ। ਇਹ ਹੁਣ ਲਾਗੂ ਕਿਰਾਇਆ ਨਿਯਮ ਵੀ ਦਿਖਾਉਂਦਾ ਹੈ।"),
+        ("ਡੇਟਾ ਕਿੱਥੋਂ ਆਉਂਦਾ ਹੈ?", "ਟਰਾਂਸਪੋਰਟ ਵਿਕਟੋਰੀਆ ਦੇ ਖੁੱਲ੍ਹੇ ਲਾਈਵ ਡੇਟਾ ਤੋਂ (CC BY 4.0)। ਵਾਹਨਾਂ ਦੀ ਥਾਂ ਆਮ ਤੌਰ 'ਤੇ ਇੱਕ ਮਿੰਟ ਤੋਂ ਘੱਟ ਪੁਰਾਣੀ ਹੁੰਦੀ ਹੈ। ਇਹ ਲੇਟ ਜਾਂ ਗਲਤ ਵੀ ਹੋ ਸਕਦੀ ਹੈ, ਇਸ ਲਈ ਸਟਾਪ 'ਤੇ ਲੱਗਿਆ ਬੋਰਡ ਜ਼ਰੂਰ ਵੇਖੋ।"),
+    ],
+    endorse="ਟਰਾਂਸਪੋਰਟ ਵਿਕਟੋਰੀਆ ਇਹ ਐਪ ਨਹੀਂ ਚਲਾਉਂਦਾ ਅਤੇ ਨਾ ਹੀ ਇਸਦਾ ਸਮਰਥਨ ਕਰਦਾ ਹੈ।",
+)
+_MEL["vi"] = dict(
+    name="Melbourne",
+    title="Bản đồ tàu, xe điện và xe buýt Melbourne trực tiếp | Wayaroo",
+    desc="Xem tàu, xe điện và xe buýt Melbourne chạy trên bản đồ trực tiếp: xe của bạn đang ở đâu, trễ bao lâu và chuyến kế tiếp tại trạm. Miễn phí, không cần tài khoản.",
+    h1="Tàu, xe điện và xe buýt Melbourne, trực tiếp trên một bản đồ",
+    lede="Wayaroo hiển thị tàu, xe điện và xe buýt đang chạy ở Melbourne trên bản đồ, từ dữ liệu trực tiếp của chính Transport Victoria (Sở Giao thông Victoria). Chạm vào một xe để xem xe đi đâu, trễ bao lâu và các trạm kế tiếp.",
+    snap="Lúc 9:00 sáng thứ Sáu, ngày 13 tháng 11 năm 2026 (giờ Melbourne)",
+    snap_day="ngày 13 tháng 11 năm 2026",
+    labels={"trains": "tàu", "trams": "xe điện", "buses": "xe buýt"},
+    also="Cùng nguồn dữ liệu này cũng phủ vùng Victoria. Cùng lúc đó, Wayaroo hiển thị 79 xe ở Geelong, 38 xe ở Ballarat và 30 xe ở Bendigo.",
+    source="Transport Victoria (GTFS-Realtime, CC BY 4.0)",
+    plan="Lên kế hoạch đi tàu, xe điện và xe buýt bằng công cụ lập lộ trình của chính Wayaroo, bên cạnh các lựa chọn đi ô tô, xe đạp và đi bộ. Mỗi chuyến đi hiển thị giá vé Myki, giá đầy đủ và giá ưu đãi, cùng số phút dư ở mỗi lần đổi xe.",
+    fare="Giảm nửa giá vé tàu, xe điện và xe buýt ở Victoria đến hết năm 2026 (giá vé ngày đầy đủ $5.70). Người dưới 18 tuổi đi miễn phí.",
+    extras=[
+        "<b>Thường trễ, thường đầy.</b> Wayaroo học từ dữ liệu trực tiếp xem mỗi tuyến thường trễ bao lâu tại mỗi trạm vào thời điểm đó trong tuần. Hành khách có thể đánh dấu xe điện hoặc xe buýt đã đầy.",
+        "<b>Chỗ giao cắt đường sắt.</b> Khi bạn lái xe, Wayaroo báo trước chỗ giao cắt đường sắt phía trước.",
+        "<b>Khu vực trường học và giới hạn tốc độ.</b> Các khu vực tốc độ của Victoria, với khu vực trường học chỉ vào ngày đi học.",
+        "<b>Hen suyễn do giông bão.</b> Từ tháng 10 đến tháng 12, Wayaroo hiển thị mức nguy cơ chính thức cho khu vực của bạn.",
+    ],
+    faq=[
+        ("Có bản đồ trực tiếp xe điện Melbourne không?", "Có. Wayaroo hiển thị xe điện, tàu và xe buýt Melbourne đang chạy trên cùng một bản đồ. Ứng dụng miễn phí và không cần tài khoản. Mở trong trình duyệt hoặc tải ứng dụng iPhone."),
+        ("Làm sao xem khi nào xe điện kế tiếp đến?", "Mở thẻ “Dành cho bạn”. Các trạm gần bạn nhất ở trên cùng, với các chuyến kế tiếp tại mỗi trạm tính bằng phút. Chạm vào một chuyến để theo dõi xe điện đó trên bản đồ."),
+        ("Wayaroo có hiển thị giá vé Myki không?", "Có. Ở Victoria, công cụ lập lộ trình hiển thị giá vé Myki cho mỗi chuyến, giá đầy đủ và giá ưu đãi. Công cụ cũng hiển thị quy định giá vé đang áp dụng."),
+        ("Dữ liệu lấy từ đâu?", "Từ dữ liệu trực tiếp mở của Transport Victoria (CC BY 4.0). Vị trí xe thường mới trong vòng một phút. Dữ liệu có thể chậm hoặc sai, vì vậy hãy luôn xem bảng thông tin tại trạm."),
+    ],
+    endorse="Transport Victoria không vận hành và không xác nhận ứng dụng này.",
+)
