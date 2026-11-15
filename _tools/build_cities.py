@@ -561,7 +561,7 @@ def city_page_tr(c, key):
 # under Germany and Belgium; India is the Delhi feed. Count again when a hidden feed comes back.
 WORLD = [
     ("France", 146, "Bordeaux (TBM), Rennes (STAR), Montpellier (TaM), Nice (Lignes d'Azur), Rouen (Astuce), Toulon (Mistral), Angers (Irigo), Brest (Bibus), Dijon (Divia), Metz (Le Met'), Tours (Fil Bleu), Le Havre (LiA), and networks on Réunion and Martinique"),
-    ("United States", 125, "King County Metro (Seattle), MARTA (Atlanta), Valley Metro (Phoenix), the Long Island Rail Road, GoDurham and Chapel Hill Transit (North Carolina)"),
+    ("United States", 128, "King County Metro (Seattle), MARTA (Atlanta), Valley Metro (Phoenix), the Long Island Rail Road, Austin (Texas), GoDurham and Chapel Hill Transit (North Carolina)"),
     ("Japan", 52, "Toyama (trams and buses), Takaoka (Manyosen tram), Kumamoto (four bus companies), Mie Kotsu buses, Nagano and Aomori city buses"),
     ("Canada", 49, "Edmonton, Halifax, York Region, Hamilton, Guelph, Kingston, Thunder Bay, Durham Region, Waterloo Region (Grand River Transit), and more than 30 BC Transit systems (Victoria, Kelowna, Kamloops, Nanaimo, Whistler)"),
     ("Poland", 4, "Warsaw, Poznań, Szczecin and Ełk"),
