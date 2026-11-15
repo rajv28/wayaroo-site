@@ -22,7 +22,7 @@ LISTED = [c for c in CITIES if c["slug"] not in PAUSED]
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 E = html.escape
-ADS = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6318067996201537" crossorigin="anonymous"></script>'
+ADS = '<meta name="google-adsense-account" content="ca-pub-6318067996201537">\n<script>/* Google ads load only outside Europe, where they would first need a consent message (privacy.html). */(function(){var z=\'\';try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||\'\'}catch(e){}if(/^(Europe|Arctic)\\//.test(z)||/^(Atlantic\\/(Reykjavik|Canary|Madeira|Azores|Faroe)|Africa\\/Ceuta|Asia\\/(Nicosia|Famagusta)|America\\/(Cayenne|Guadeloupe|Martinique|Marigot|St_Barthelemy)|Indian\\/(Reunion|Mayotte))$/.test(z))return;var s=document.createElement(\'script\');s.async=true;s.crossOrigin=\'anonymous\';s.src=\'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6318067996201537\';document.head.appendChild(s)})();</script>'
 NAV = '''  <nav>
     <a class="brand" href="index.html"><img src="icon.svg" alt="">Wayaroo</a>
     <div class="links"><a href="live-public-transport.html">Live transport</a><a href="fuel-prices.html">Fuel</a><a href="driving.html">Driving</a><a href="public-toilets.html">Toilets</a><a href="support.html">Support</a><a class="open" href="https://app.wayaroo.com/">Open the app</a></div>
