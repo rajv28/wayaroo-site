@@ -47,16 +47,17 @@ def view_link(c, zoom=None):
     return f"{APP}?view={lon},{lat},{zoom or z}&modes=rtbf"
 
 
-def head(title, desc, path, image, ld):
+def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
+    alt = "".join(f'\n<link rel="alternate" hreflang="{h}" href="https://wayaroo.com/{u}">' for h, u in (alts or []))
     return f'''<!doctype html>
-<html lang="en-AU">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6831237478">
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc)}">
-<link rel="canonical" href="https://wayaroo.com/{path}">
+<link rel="canonical" href="https://wayaroo.com/{path}">{alt}
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="site.css">
@@ -73,8 +74,13 @@ def head(title, desc, path, image, ld):
 </head>
 <body>
 <div class="wrap">
-{NAV}
+{nav or NAV}
 '''
+
+
+def ja_alts(c):
+    """English and Japanese pages of a city point at each other (hreflang); the English page is the default."""
+    return [("en", f"{c['slug']}.html"), ("ja", f"{c['slug']}-ja.html"), ("x-default", f"{c['slug']}.html")] if c.get("ja") else None
 
 
 def city_page(c):
@@ -108,7 +114,7 @@ def city_page(c):
     faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in c["faq"])
     others = " · ".join(f'<a href="{o["slug"]}.html">{E(o["name"])}</a>' for o in CITIES if o["slug"] != c["slug"])
     body = f'''
-  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">Cities</a> › {E(c["name"])}</p>
+  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">Cities</a> › {E(c["name"])}{f' · <a href="{c["slug"]}-ja.html" lang="ja" hreflang="ja">日本語</a>' if c.get("ja") else ""}</p>
   <section class="feature{'' if has_img else ' solo'}">
     <div>
       <h1>{E(c["h1"])}</h1>
@@ -147,7 +153,102 @@ def city_page(c):
 </body>
 </html>
 '''
-    (ROOT / path).write_text(head(c["title"], c["desc"], path, image, ld) + body, encoding="utf-8")
+    (ROOT / path).write_text(head(c["title"], c["desc"], path, image, ld, alts=ja_alts(c)) + body, encoding="utf-8")
+    return path
+
+
+# Japanese pages (cities with a "ja" block): the same facts as the English page, in polite Japanese. The links go to
+# the English pages of the site (they have no Japanese copy yet); the app itself opens in Japanese on a Japanese phone.
+JA_NAV = '''  <nav>
+    <a class="brand" href="index.html"><img src="icon.svg" alt="">Wayaroo</a>
+    <div class="links"><a href="live-public-transport.html">交通情報</a><a href="fuel-prices.html">燃料</a><a href="driving.html">運転</a><a href="public-toilets.html">トイレ</a><a href="support.html">サポート</a><a class="open" href="https://app.wayaroo.com/">アプリを開く</a></div>
+  </nav>'''
+JA_FOOT = '''  <footer>
+    <p>Wayaroo™ の発行元は Ozrsym Pty Ltd（ABN 56 671 004 390、オーストラリア・ビクトリア州）です。お問い合わせ：<a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
+    <p><a href="index.html">ホーム</a><a href="cities.html">都市一覧</a><a href="live-public-transport.html">交通情報</a><a href="fuel-prices.html">燃料価格</a><a href="driving.html">運転</a><a href="public-toilets.html">公衆トイレ</a><a href="support.html">サポート</a><a href="privacy.html">プライバシー</a><a href="terms.html">利用規約</a><a href="credits.html">データ出典</a></p>
+    <p>Wayaroo をフォロー：<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.instagram.com/wayaroo/" rel="me noopener">Instagram</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
+    <p>© 2026 Ozrsym Pty Ltd</p>
+  </footer>'''
+JA_CTA = f'''  <section class="cta">
+    <div><b>App Store で Wayaroo を入手するか、ブラウザでご利用ください。</b><br><span class="note">無料、アカウント不要、20言語対応（日本語を含む）。iPhone・iPad 用です。Android アプリは Google Play で審査中です。</span></div>
+    <span class="ctabtns"><a class="badge" href="{STORE}">App Store からダウンロード</a><a class="badge alt" href="{APP}">ブラウザで開く</a></span>
+  </section>'''
+JA_SEE = "車両をタップすると、系統、行き先、次の停留所、そして事業者が予測を送っている場合は遅れが表示されます。"
+
+
+def city_page_ja(c):
+    j = c["ja"]
+    path = f"{c['slug']}-ja.html"
+    img = f"img/city-{c['slug']}.jpg"
+    has_img = (ROOT / img).exists()
+    image = img if has_img else "img/live-melbourne.jpg"
+    counts = [(j["labels"][label], v) for label, v in c["counts"]]  # the English page's numbers, Japanese words
+    total = sum(v for _, v in counts)
+    snap_iso = c.get("snap_iso", SNAP_ISO)
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "WebPage", "name": j["h1"], "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
+             "about": {"@id": "https://wayaroo.com/#app"}, "primaryImageOfPage": f"https://wayaroo.com/{image}", "inLanguage": "ja", "dateModified": snap_iso},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Wayaroo", "item": "https://wayaroo.com/"},
+                {"@type": "ListItem", "position": 2, "name": "都市一覧", "item": "https://wayaroo.com/cities.html"},
+                {"@type": "ListItem", "position": 3, "name": j["name"], "item": f"https://wayaroo.com/{path}"}]},
+            {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in j["faq"]]},
+        ],
+    }
+    shot_img = f'<img class="shot" src="{img}" width="375" height="815" alt="{E(j["name"])}の交通が Wayaroo の地図上で動いている様子（{E(j["snap_day"])}）">'
+    webp = f"img/city-{c['slug']}.webp"
+    if has_img and (ROOT / webp).exists():
+        shot_img = f'<picture><source srcset="{webp}" type="image/webp">{shot_img}</picture>'
+    shot = f"\n    {shot_img}" if has_img else ""
+    rows = "".join(f"<tr><td>{E(label)}</td><td>{n(v)}台</td></tr>" for label, v in counts)
+    listed = "、".join(f"{E(label)} {n(v)}台" for label, v in counts)
+    also = f"\n  <p>{E(j['also'])}</p>" if j.get("also") else ""
+    extras = "".join(f"\n    <li>{x}</li>" for x in j["extras"])
+    faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in j["faq"])
+    others = "、".join(f'<a href="{o["slug"]}-ja.html">{E(o["ja"]["name"])}</a>' for o in CITIES if o.get("ja") and o["slug"] != c["slug"])
+    body = f'''
+  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">都市一覧</a> › {E(j["name"])} · <a href="{c["slug"]}.html" lang="en" hreflang="en">English</a></p>
+  <section class="feature{'' if has_img else ' solo'}">
+    <div>
+      <h1>{E(j["h1"])}</h1>
+      <p>{E(j["lede"])}</p>
+      <p><span class="ctabtns"><a class="badge go" href="{view_link(c)}">{E(j["name"])}のライブマップを開く</a><a class="badge alt2" href="{STORE}">iPhone アプリを入手</a></span></p>
+      <p class="note">無料です。アカウントは不要です。ブラウザで開きます。</p>
+    </div>{shot}
+  </section>
+
+  <h2>地図に表示されていた車両</h2>
+  <p>{E(j["snap"])}、Wayaroo の地図には{E(j["name"])}で{n(total)}台の車両が表示されていました（{listed}）。</p>
+  <div class="tablewrap"><table class="facts"><thead><tr><th>種類</th><th>その時の台数</th></tr></thead><tbody>{rows}</tbody></table></div>{also}
+  <p class="note">台数は時間帯によって変わります。出典：{E(j["source"])}。</p>
+
+  <h2>できること</h2>
+  <ul class="plain">
+    <li><b>今の位置を見る。</b>{j.get("see") or JA_SEE}</li>
+    <li><b>追いかける。</b>「同乗する」を選ぶと、地図が1台の車両を追い続けます。</li>{extras}
+  </ul>
+
+  <h2>ルートを調べる</h2>
+  <p>{E(j["plan"])}</p>
+
+  <section class="faq">
+    <h2>よくある質問</h2>{faq}
+    <details><summary>Wayaroo は無料ですか？</summary><p>はい。Wayaroo は無料で、アカウントは不要です。設定はお使いのスマートフォンに保存されます。</p></details>
+  </section>
+
+{JA_CTA}
+
+  <p>{"ほかの都市（日本語）：" + others + " · " if others else ""}<a href="cities.html">都市一覧（英語）</a></p>
+  <p class="note">Wayaroo は Ozrsym Pty Ltd による独立したアプリです。{E(j["endorse"])}車両の位置と時刻は事業者のデータによるもので、遅れや誤りがある場合があります。必ず停留所の表示もご確認ください。データの出典一覧：<a href="credits.html">データ出典</a>（英語）。</p>
+
+{JA_FOOT}
+</div>
+</body>
+</html>
+'''
+    (ROOT / path).write_text(head(j["title"], j["desc"], path, image, ld, lang="ja", alts=ja_alts(c), nav=JA_NAV) + body, encoding="utf-8")
     return path
 
 
@@ -228,5 +329,5 @@ def cities_page():
 
 
 if __name__ == "__main__":
-    made = [city_page(c) for c in CITIES] + [cities_page()]
+    made = [city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [cities_page()]
     print("wrote", ", ".join(made))
