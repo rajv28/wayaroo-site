@@ -78,9 +78,20 @@ def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
 '''
 
 
-def ja_alts(c):
-    """English and Japanese pages of a city point at each other (hreflang); the English page is the default."""
-    return [("en", f"{c['slug']}.html"), ("ja", f"{c['slug']}-ja.html"), ("x-default", f"{c['slug']}.html")] if c.get("ja") else None
+# A city's pages in other languages: (key of its block in cities_data.py, file suffix, hreflang, link label).
+# A city can carry several blocks (ja, zh); each makes <slug>-<suffix>.html. The English page stays the default.
+LANGS = [("ja", "ja", "ja", "日本語"), ("zh", "zh", "zh-Hans", "中文")]
+
+
+def lang_alts(c):
+    """The English page and each other-language page of a city point at each other (hreflang)."""
+    others = [(hl, f"{c['slug']}-{suf}.html") for key, suf, hl, _ in LANGS if c.get(key)]
+    return [("en", f"{c['slug']}.html")] + others + [("x-default", f"{c['slug']}.html")] if others else None
+
+
+def lang_links(c):
+    """' · 日本語' / ' · 中文' links on the English page, one per language the city has."""
+    return "".join(f' · <a href="{c["slug"]}-{suf}.html" lang="{hl}" hreflang="{hl}">{label}</a>' for key, suf, hl, label in LANGS if c.get(key))
 
 
 def city_page(c):
@@ -114,7 +125,7 @@ def city_page(c):
     faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in c["faq"])
     others = " · ".join(f'<a href="{o["slug"]}.html">{E(o["name"])}</a>' for o in CITIES if o["slug"] != c["slug"])
     body = f'''
-  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">Cities</a> › {E(c["name"])}{f' · <a href="{c["slug"]}-ja.html" lang="ja" hreflang="ja">日本語</a>' if c.get("ja") else ""}</p>
+  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">Cities</a> › {E(c["name"])}{lang_links(c)}</p>
   <section class="feature{'' if has_img else ' solo'}">
     <div>
       <h1>{E(c["h1"])}</h1>
@@ -153,7 +164,7 @@ def city_page(c):
 </body>
 </html>
 '''
-    (ROOT / path).write_text(head(c["title"], c["desc"], path, image, ld, alts=ja_alts(c)) + body, encoding="utf-8")
+    (ROOT / path).write_text(head(c["title"], c["desc"], path, image, ld, alts=lang_alts(c)) + body, encoding="utf-8")
     return path
 
 
@@ -248,7 +259,110 @@ def city_page_ja(c):
 </body>
 </html>
 '''
-    (ROOT / path).write_text(head(j["title"], j["desc"], path, image, ld, lang="ja", alts=ja_alts(c), nav=JA_NAV) + body, encoding="utf-8")
+    (ROOT / path).write_text(head(j["title"], j["desc"], path, image, ld, lang="ja", alts=lang_alts(c), nav=JA_NAV) + body, encoding="utf-8")
+    return path
+
+
+# Simplified Chinese pages (cities with a "zh" block): the same facts as the English page. The site's other pages are
+# in English (the links say so); the app itself opens in Chinese on a Chinese phone.
+ZH_NAV = """  <nav>
+    <a class="brand" href="index.html"><img src="icon.svg" alt="">Wayaroo</a>
+    <div class="links"><a href="live-public-transport.html">实时交通</a><a href="fuel-prices.html">油价</a><a href="driving.html">驾驶</a><a href="public-toilets.html">厕所</a><a href="support.html">支持</a><a class="open" href="https://app.wayaroo.com/">打开应用</a></div>
+  </nav>"""
+ZH_FOOT = """  <footer>
+    <p>Wayaroo™ 由 Ozrsym Pty Ltd（ABN 56 671 004 390，澳大利亚维多利亚州）发布。联系方式：<a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
+    <p><a href="index.html">首页</a><a href="cities.html">城市列表</a><a href="live-public-transport.html">实时交通</a><a href="fuel-prices.html">油价</a><a href="driving.html">驾驶</a><a href="public-toilets.html">公共厕所</a><a href="support.html">支持</a><a href="privacy.html">隐私</a><a href="terms.html">条款</a><a href="credits.html">数据来源</a></p>
+    <p>关注 Wayaroo：<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.instagram.com/wayaroo/" rel="me noopener">Instagram</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
+    <p>© 2026 Ozrsym Pty Ltd</p>
+  </footer>"""
+ZH_CTA = f"""  <section class="cta">
+    <div><b>在 App Store 下载 Wayaroo，或在浏览器中使用。</b><br><span class="note">免费，无需注册账户，支持20种语言（含中文）。适用于 iPhone 和 iPad。Android 版正在 Google Play 审核中。</span></div>
+    <span class="ctabtns"><a class="badge" href="{STORE}">在 App Store 下载</a><a class="badge alt" href="{APP}">在浏览器中打开</a></span>
+  </section>"""
+ZH_SEE = "点击车辆，即可查看线路、开往哪里、接下来的站点，以及运营方提供预测时的晚点情况。"
+_MONTHS = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 1)}
+
+
+def zh_date(d):
+    """'2 November 2026' → '2026年11月2日'."""
+    day, month, year = d.split()
+    return f"{year}年{_MONTHS[month]}月{int(day)}日"
+
+
+def city_page_zh(c):
+    z = c["zh"]
+    path = f"{c['slug']}-zh.html"
+    img = f"img/city-{c['slug']}.jpg"
+    has_img = (ROOT / img).exists()
+    image = img if has_img else "img/live-melbourne.jpg"
+    counts = [(z["labels"][label], v) for label, v in c["counts"]]  # the English page's numbers, Chinese words
+    total = sum(v for _, v in counts)
+    snap_iso = c.get("snap_iso", SNAP_ISO)
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "WebPage", "name": z["h1"], "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
+             "about": {"@id": "https://wayaroo.com/#app"}, "primaryImageOfPage": f"https://wayaroo.com/{image}", "inLanguage": "zh-Hans", "dateModified": snap_iso},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Wayaroo", "item": "https://wayaroo.com/"},
+                {"@type": "ListItem", "position": 2, "name": "城市列表", "item": "https://wayaroo.com/cities.html"},
+                {"@type": "ListItem", "position": 3, "name": z["name"], "item": f"https://wayaroo.com/{path}"}]},
+            {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in z["faq"]]},
+        ],
+    }
+    shot_img = f'<img class="shot" src="{img}" width="375" height="815" alt="{E(z["name"])}的公共交通在 Wayaroo 地图上实时移动（{E(z["snap_day"])}）">'
+    webp = f"img/city-{c['slug']}.webp"
+    if has_img and (ROOT / webp).exists():
+        shot_img = f'<picture><source srcset="{webp}" type="image/webp">{shot_img}</picture>'
+    shot = f"\n    {shot_img}" if has_img else ""
+    rows = "".join(f"<tr><td>{E(label)}</td><td>{n(v)}</td></tr>" for label, v in counts)
+    listed = "、".join(f"{E(label)} {n(v)}" for label, v in counts)
+    also = f"\n  <p>{E(z['also'])}</p>" if z.get("also") else ""
+    fare = (f'\n  <p><b>Wayaroo 在此显示的票价优惠：</b>{E(z["fare"])} <span class="note">（核实日期：{zh_date(FARES_CHECKED)}；应用内附有来源链接。）</span></p>' if z.get("fare") else "")
+    extras = "".join(f"\n    <li>{x}</li>" for x in z["extras"])
+    faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in z["faq"])
+    others = " · ".join(f'<a href="{o["slug"]}-zh.html">{E(o["zh"]["name"])}</a>' for o in CITIES if o.get("zh") and o["slug"] != c["slug"])
+    body = f"""
+  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">城市列表</a> › {E(z["name"])} · <a href="{c["slug"]}.html" lang="en" hreflang="en">English</a></p>
+  <section class="feature{'' if has_img else ' solo'}">
+    <div>
+      <h1>{E(z["h1"])}</h1>
+      <p>{E(z["lede"])}</p>
+      <p><span class="ctabtns"><a class="badge go" href="{view_link(c)}">打开{E(z["name"])}实时地图</a><a class="badge alt2" href="{STORE}">下载 iPhone 应用</a></span></p>
+      <p class="note">免费，无需注册账户，在浏览器中打开。</p>
+    </div>{shot}
+  </section>
+
+  <h2>当时地图上的车辆</h2>
+  <p>{E(z["snap"])}，Wayaroo 在{E(z["name"])}的地图上共显示了 {n(total)} 辆车（{listed}）。</p>
+  <div class="tablewrap"><table class="facts"><thead><tr><th>类型</th><th>当时的车辆数</th></tr></thead><tbody>{rows}</tbody></table></div>{also}
+  <p class="note">车辆数在一天中会变化。数据来源：{E(z["source"])}。</p>
+
+  <h2>您可以做什么</h2>
+  <ul class="plain">
+    <li><b>查看车辆现在在哪里。</b>{z.get("see") or ZH_SEE}</li>
+    <li><b>跟随一辆车。</b>选择“跟车视角”，地图会一直跟随这辆车。</li>{extras}
+  </ul>
+
+  <h2>规划行程</h2>
+  <p>{E(z["plan"])}</p>{fare}
+
+  <section class="faq">
+    <h2>常见问题</h2>{faq}
+    <details><summary>Wayaroo 是免费的吗？</summary><p>是的。Wayaroo 免费，无需注册账户。您的设置保存在您的手机上。</p></details>
+  </section>
+
+{ZH_CTA}
+
+  <p>{"其他城市（中文）：" + others + " · " if others else ""}<a href="cities.html">城市列表（英文）</a></p>
+  <p class="note">Wayaroo 是 Ozrsym Pty Ltd 推出的独立应用。{E(z["endorse"])}车辆位置和时间来自运营方的数据，可能有延迟或错误。请务必查看车站的显示屏。完整的数据来源列表：<a href="credits.html">数据来源</a>（英文）。</p>
+
+{ZH_FOOT}
+</div>
+</body>
+</html>
+"""
+    (ROOT / path).write_text(head(z["title"], z["desc"], path, image, ld, lang="zh-Hans", alts=lang_alts(c), nav=ZH_NAV) + body, encoding="utf-8")
     return path
 
 
@@ -329,5 +443,5 @@ def cities_page():
 
 
 if __name__ == "__main__":
-    made = [city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [cities_page()]
+    made = [city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [city_page_zh(c) for c in CITIES if c.get("zh")] + [cities_page()]
     print("wrote", ", ".join(made))
