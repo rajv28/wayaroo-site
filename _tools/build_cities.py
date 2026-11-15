@@ -47,6 +47,15 @@ def view_link(c, zoom=None):
     return f"{APP}?view={lon},{lat},{zoom or z}&modes=rtbf"
 
 
+def og_image(image):
+    # A link card on a social site wants a wide picture (1200 x 630); the tall phone picture is cut badly.
+    return "img/share-card.jpg" if image in ("img/live-melbourne.jpg", "img/share-card.jpg") else image
+
+
+def og_size(image):
+    return '\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">' if og_image(image) == "img/share-card.jpg" else ""
+
+
 def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
     alt = "".join(f'\n<link rel="alternate" hreflang="{h}" href="https://wayaroo.com/{u}">' for h, u in (alts or []))
     return f'''<!doctype html>
@@ -66,7 +75,7 @@ def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
 <meta property="og:title" content="{E(title.split(" | ")[0])}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="https://wayaroo.com/{path}">
-<meta property="og:image" content="https://wayaroo.com/{image}">
+<meta property="og:image" content="https://wayaroo.com/{og_image(image)}">{og_size(image)}
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=2)}
 </script>
@@ -613,10 +622,22 @@ def cities_page():
 </body>
 </html>
 '''
-    (ROOT / path).write_text(head(title, desc, path, "img/live-melbourne.jpg", ld) + body, encoding="utf-8")
+    (ROOT / path).write_text(head(title, desc, path, "img/share-card.jpg", ld) + body, encoding="utf-8")  # 1200 x 630, for link cards
     return path
 
 
 if __name__ == "__main__":
     made = [city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [city_page_zh(c) for c in CITIES if c.get("zh")] + [city_page_tr(c, k) for k in TR for c in CITIES if c.get(k)] + [cities_page()]
     print("wrote", ", ".join(made))
+
+# App Store links: the store of the page's country when the app is on sale there (Japan, Canada), else Australia.
+# A link with no country opens Apple's United States store on a computer, where Wayaroo is not on sale (404).
+STORE_CC = {"Japan": "jp", "Canada": "ca"}
+for _c in CITIES:
+    _cc = STORE_CC.get(_c.get("country", "Australia"))
+    if not _cc:
+        continue
+    for _path in (f'{_c["slug"]}.html', f'{_c["slug"]}-ja.html'):
+        _f = ROOT / _path
+        if _f.exists():
+            _f.write_text(_f.read_text(encoding="utf-8").replace("apps.apple.com/au/app/", f"apps.apple.com/{_cc}/app/"), encoding="utf-8")
