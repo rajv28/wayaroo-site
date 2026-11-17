@@ -12,7 +12,7 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from cities_data import APP, CITIES, FARES_CHECKED, SNAP, SNAP_DAY, SNAP_ISO, STORE  # noqa: E402
+from cities_data import APP, CITIES, FARES_CHECKED, PLAY, SNAP, SNAP_DAY, SNAP_ISO, STORE  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 E = html.escape
@@ -28,8 +28,8 @@ FOOT = '''  <footer>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>'''
 CTA = f'''  <section class="cta">
-    <div><b>Get Wayaroo on the App Store, or use it in your browser.</b><br><span class="note">Free, no account, 20 languages. For iPhone and iPad. The Android app is in review at Google Play.</span></div>
-    <span class="ctabtns"><a class="badge" href="{STORE}">Download on the App Store</a><a class="badge alt" href="{APP}">Open in your browser</a></span>
+    <div><b>Get Wayaroo on the App Store or Google Play, or use it in your browser.</b><br><span class="note">Free, no account, 20 languages. For iPhone, iPad and Android.</span></div>
+    <span class="ctabtns"><a class="badge" href="{STORE}">Download on the App Store</a><a class="badge" href="{PLAY}">Get it on Google Play</a><a class="badge alt" href="{APP}">Open in your browser</a></span>
   </section>'''
 
 
@@ -142,7 +142,7 @@ def city_page(c):
     <div>
       <h1>{E(c["h1"])}</h1>
       <p>{E(c["lede"])}</p>
-      <p><span class="ctabtns"><a class="badge go" href="{view_link(c)}">Open the live map of {E(c["name"])}</a><a class="badge alt2" href="{STORE}">Get the iPhone app</a></span></p>
+      <p><span class="ctabtns"><a class="badge go" href="{view_link(c)}">Open the live map of {E(c["name"])}</a><a class="badge alt2" href="{STORE}">Get the iPhone app</a><a class="badge alt2" href="{PLAY}">Get the Android app</a></span></p>
       <p class="note">Free. No account. It opens in your browser.</p>
     </div>{shot}
   </section>
@@ -193,8 +193,8 @@ JA_FOOT = '''  <footer>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>'''
 JA_CTA = f'''  <section class="cta">
-    <div><b>App Store で Wayaroo を入手するか、ブラウザでご利用ください。</b><br><span class="note">無料、アカウント不要、20言語対応（日本語を含む）。iPhone・iPad 用です。Android アプリは Google Play で審査中です。</span></div>
-    <span class="ctabtns"><a class="badge" href="{STORE}">App Store からダウンロード</a><a class="badge alt" href="{APP}">ブラウザで開く</a></span>
+    <div><b>App Store または Google Play で Wayaroo を入手するか、ブラウザでご利用ください。</b><br><span class="note">無料、アカウント不要、20言語対応（日本語を含む）。iPhone・iPad・Android 用です。</span></div>
+    <span class="ctabtns"><a class="badge" href="{STORE}">App Store からダウンロード</a><a class="badge" href="{PLAY}">Google Play で手に入れよう</a><a class="badge alt" href="{APP}">ブラウザで開く</a></span>
   </section>'''
 JA_SEE = "車両をタップすると、系統、行き先、次の停留所、そして事業者が予測を送っている場合は遅れが表示されます。"
 
@@ -288,8 +288,8 @@ ZH_FOOT = """  <footer>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>"""
 ZH_CTA = f"""  <section class="cta">
-    <div><b>在 App Store 下载 Wayaroo，或在浏览器中使用。</b><br><span class="note">免费，无需注册账户，支持20种语言（含中文）。适用于 iPhone 和 iPad。Android 版正在 Google Play 审核中。</span></div>
-    <span class="ctabtns"><a class="badge" href="{STORE}">在 App Store 下载</a><a class="badge alt" href="{APP}">在浏览器中打开</a></span>
+    <div><b>在 App Store 或 Google Play 下载 Wayaroo，或在浏览器中使用。</b><br><span class="note">免费，无需注册账户，支持20种语言（含中文）。适用于 iPhone、iPad 和 Android。</span></div>
+    <span class="ctabtns"><a class="badge" href="{STORE}">在 App Store 下载</a><a class="badge" href="{PLAY}">在 Google Play 下载</a><a class="badge alt" href="{APP}">在浏览器中打开</a></span>
   </section>"""
 ZH_SEE = "点击车辆，即可查看线路、开往哪里、接下来的站点，以及运营方提供预测时的晚点情况。"
 _MONTHS = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 1)}
@@ -390,8 +390,8 @@ TR = {
         foot_links=["होम", "शहर", "लाइव ट्रांसपोर्ट", "ईंधन की कीमतें", "ड्राइविंग", "सार्वजनिक टॉयलेट", "सहायता", "गोपनीयता", "शर्तें", "डेटा स्रोत"],
         follow="Wayaroo को फ़ॉलो करें:",
         cta_b="Wayaroo को App Store से डाउनलोड करें, या अपने ब्राउज़र में इस्तेमाल करें।",
-        cta_note="मुफ़्त, कोई अकाउंट नहीं, 20 भाषाएँ (हिन्दी समेत)। iPhone और iPad के लिए। Android ऐप Google Play पर समीक्षा में है।",
-        cta_store="App Store से डाउनलोड करें", cta_web="ब्राउज़र में खोलें",
+        cta_note="मुफ़्त, कोई अकाउंट नहीं, 20 भाषाएँ (हिन्दी समेत)। iPhone, iPad और Android के लिए।",
+        cta_store="App Store से डाउनलोड करें", cta_play="Google Play से डाउनलोड करें", cta_web="ब्राउज़र में खोलें",
         cities="शहरों की सूची", open_map="{name} का लाइव मैप खोलें", get_app="iPhone ऐप डाउनलोड करें",
         free_note="मुफ़्त। कोई अकाउंट नहीं। आपके ब्राउज़र में खुलता है।",
         h_map="मैप पर क्या दिख रहा था", sentence="{snap}, Wayaroo ने {name} में मैप पर कुल {total} वाहन दिखाए ({listed})।", sep=", ",
@@ -412,8 +412,8 @@ TR = {
         foot_links=["ਮੁੱਖ ਪੰਨਾ", "ਸ਼ਹਿਰ", "ਲਾਈਵ ਟਰਾਂਸਪੋਰਟ", "ਬਾਲਣ ਦੀਆਂ ਕੀਮਤਾਂ", "ਡਰਾਈਵਿੰਗ", "ਜਨਤਕ ਟਾਇਲਟ", "ਸਹਾਇਤਾ", "ਪਰਦੇਦਾਰੀ", "ਸ਼ਰਤਾਂ", "ਡੇਟਾ ਸਰੋਤ"],
         follow="Wayaroo ਨੂੰ ਫ਼ਾਲੋ ਕਰੋ:",
         cta_b="Wayaroo ਨੂੰ App Store ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ, ਜਾਂ ਆਪਣੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਵਰਤੋ।",
-        cta_note="ਮੁਫ਼ਤ, ਕੋਈ ਖਾਤਾ ਨਹੀਂ, 20 ਭਾਸ਼ਾਵਾਂ (ਪੰਜਾਬੀ ਸਮੇਤ)। iPhone ਅਤੇ iPad ਲਈ। Android ਐਪ Google Play 'ਤੇ ਸਮੀਖਿਆ ਅਧੀਨ ਹੈ।",
-        cta_store="App Store ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ", cta_web="ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੋਲ੍ਹੋ",
+        cta_note="ਮੁਫ਼ਤ, ਕੋਈ ਖਾਤਾ ਨਹੀਂ, 20 ਭਾਸ਼ਾਵਾਂ (ਪੰਜਾਬੀ ਸਮੇਤ)। iPhone, iPad ਅਤੇ Android ਲਈ।",
+        cta_store="App Store ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ", cta_play="Google Play ਤੋਂ ਡਾਊਨਲੋਡ ਕਰੋ", cta_web="ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੋਲ੍ਹੋ",
         cities="ਸ਼ਹਿਰਾਂ ਦੀ ਸੂਚੀ", open_map="{name} ਦਾ ਲਾਈਵ ਨਕਸ਼ਾ ਖੋਲ੍ਹੋ", get_app="iPhone ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ",
         free_note="ਮੁਫ਼ਤ। ਕੋਈ ਖਾਤਾ ਨਹੀਂ। ਤੁਹਾਡੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੁੱਲ੍ਹਦਾ ਹੈ।",
         h_map="ਨਕਸ਼ੇ 'ਤੇ ਕੀ ਦਿਖ ਰਿਹਾ ਸੀ", sentence="{snap}, Wayaroo ਨੇ {name} ਵਿੱਚ ਨਕਸ਼ੇ 'ਤੇ ਕੁੱਲ {total} ਵਾਹਨ ਦਿਖਾਏ ({listed})।", sep=", ",
@@ -434,8 +434,8 @@ TR = {
         foot_links=["Trang chủ", "Thành phố", "Giao thông trực tiếp", "Giá nhiên liệu", "Lái xe", "Nhà vệ sinh công cộng", "Hỗ trợ", "Quyền riêng tư", "Điều khoản", "Nguồn dữ liệu"],
         follow="Theo dõi Wayaroo:",
         cta_b="Tải Wayaroo trên App Store, hoặc dùng ngay trong trình duyệt.",
-        cta_note="Miễn phí, không cần tài khoản, 20 ngôn ngữ (có tiếng Việt). Cho iPhone và iPad. Ứng dụng Android đang được Google Play xét duyệt.",
-        cta_store="Tải trên App Store", cta_web="Mở trong trình duyệt",
+        cta_note="Miễn phí, không cần tài khoản, 20 ngôn ngữ (có tiếng Việt). Cho iPhone, iPad và Android.",
+        cta_store="Tải trên App Store", cta_play="Tải trên Google Play", cta_web="Mở trong trình duyệt",
         cities="Danh sách thành phố", open_map="Mở bản đồ trực tiếp {name}", get_app="Tải ứng dụng iPhone",
         free_note="Miễn phí. Không cần tài khoản. Mở ngay trong trình duyệt.",
         h_map="Trên bản đồ lúc đó", sentence="{snap}, Wayaroo hiển thị {total} xe ở {name} trên bản đồ ({listed}).", sep=", ",
@@ -509,7 +509,7 @@ def city_page_tr(c, key):
   </footer>'''
     cta = f'''  <section class="cta">
     <div><b>{E(w["cta_b"])}</b><br><span class="note">{E(w["cta_note"])}</span></div>
-    <span class="ctabtns"><a class="badge" href="{STORE}">{E(w["cta_store"])}</a><a class="badge alt" href="{APP}">{E(w["cta_web"])}</a></span>
+    <span class="ctabtns"><a class="badge" href="{STORE}">{E(w["cta_store"])}</a><a class="badge" href="{PLAY}">{E(w["cta_play"])}</a><a class="badge alt" href="{APP}">{E(w["cta_web"])}</a></span>
   </section>'''
     sentence = E(w["sentence"]).format(snap=E(z["snap"]), name=E(z["name"]), total=nn(total), listed=listed)
     body = f"""

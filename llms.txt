@@ -1,12 +1,12 @@
 # Wayaroo
 
-> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The iPhone and iPad app is on the App Store (https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478, free). The web app is at https://app.wayaroo.com/ (free, no download). The Android app is in review at Google Play.
+> Wayaroo is a free map app for Australia from Ozrsym Pty Ltd (Melbourne). It puts live public transport, trip planning with fares, turn-by-turn directions with safety warnings, fuel prices, weather and public toilets on one map, in 20 languages, with no account. The iPhone and iPad app is on the App Store (https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478, free). The Android app is on Google Play (https://play.google.com/store/apps/details?id=com.wayaroo.app, free). The web app is at https://app.wayaroo.com/ (free, no download).
 
 ## What it does
 - Live buses, trains, trams and ferries on the map: Melbourne and regional Victoria (Transport Victoria feed), Sydney and NSW (Transport for NSW feeds, Sydney Ferries included), Brisbane, the Gold Coast, the Sunshine Coast and Cairns (Translink feed), Adelaide (Adelaide Metro feed), Canberra (Transport Canberra feed), and about 390 operators in 13 other countries (operators' open GTFS feeds; a vehicle's mode comes from the operator's timetable). Not live: Perth (timetable times only), Hobart, Darwin, New Zealand. Shows delay, next stops, "usually late" and "often full" at this time, nearest stops and wharves with next departures.
 - Trip planner: Melbourne (own planner, Myki fares) and Sydney/NSW (Transport for NSW's planner, Opal fare estimate), with a connection check (spare minutes at each change), replacement-bus flags and a step-free option.
 - Directions by car, bike or foot: lane arrows, speed limit, school zones, speed humps, level-crossing wait, crash hotspots, long-light warnings, truck mode (height and weight limits), share-my-trip link, rain at destination.
-- Fuel: cheapest station for your fuel type within the distance you choose, whether the detour is worth it, and when to fill up from the local price cycle. NSW Government FuelCheck and Tasmanian Government FuelCheck TAS prices plus driver-shared prices; Victoria's official Servo Saver prices are being connected.
+- Fuel: cheapest station for your fuel type within the distance you choose, whether the detour is worth it, and when to fill up from the local price cycle. Official prices: NSW Government FuelCheck, Tasmanian Government FuelCheck TAS, WA FuelWatch and the Victorian Government's Servo Saver (Victoria's official prices are at least 24 hours old), plus driver-shared prices everywhere.
 - Trip planner: one row of tabs with each way's time (car, public transport, bike, walking) and a Victorian taxi estimate; the chosen way's card, Start and its other routes under it. Bike and walking cards say how hilly the way is (metres up and down, from open terrain data). The bike card says how much of the ride is on bike paths or lanes (OpenStreetMap).
 - Toll prices for cars (Melbourne): West Gate Tunnel about $4.26 (inbound city exits $6.82 on weekday mornings), CityLink up to $12.77, EastLink up to $8.05, from the prices Linkt and EastLink publish.
 - Taxi fare estimate (Victoria): for a trip that starts in Melbourne, Dandenong, Frankston, the Mornington Peninsula, Geelong, Ballarat or Bendigo, about what a taxi from a rank or hailed in the street costs, from the Victorian Government's maximum fares (Safe Transport Victoria, in force from 1 July 2026), with the day, overnight or peak rate. Tolls, airport and card fees are extra. No prices of booked taxis or rideshare.
@@ -17,10 +17,16 @@
 - Weather and air quality on the map (NOAA GFS), today's forecast, UV and clothing advice.
 - Move (Profile → Move): records walks, runs and bike rides with the phone's GPS (distance, time, pace or speed, climb, calories), per-kilometre splits, best efforts (400 m to marathon running, 5 to 100 km riding), weekly goals, weeks in a row, an estimate of fitness, fatigue and form, a voice for each kilometre, a height chart, 3D replay, a picture to share and GPX export. No account; activities stay on the phone.
 - Budget (Profile → Budget): payments typed in by hand or a bank statement file (CSV) sorted into categories, monthly budgets, regular payments and subscriptions with the next date, the bills due before the next pay and an estimate of what is left to spend. No bank login; transactions stay on the phone. Estimates, not financial advice.
-- 20 languages: en, zh, zh-Hant, hi, pa, ar, vi, el, it, fil, es, ne, bn, ur, ta, ko, ja, id, fr, de.
+- Family & friends map: a private group of up to 12 people, joined with a six-letter code or a link; members who choose to share show on each other's map; no account, no chat; positions are held in memory for two hours at most. Also "Share my trip" (a live link until arrival) and "Share this bus" (an adult on a school bus shares the bus's position).
+- Space and Earth: satellites and space stations live (ISS, Tiangong, the brightest satellites, Starlink; CelesTrak data); "Leave Earth" (the Sun, planets and Moon at their real positions for the date, spacecraft, asteroids passing Earth, nearest stars, the Milky Way, neighbouring galaxies); "Other worlds" (NASA maps of the Moon, Mars and ten more worlds, with the Mars rovers' positions); a one-minute flight from space to your street; "Dive here" (down to the real sea-floor depth); aurora chance and tonight's sky; "Live Earth" (volcanoes, storms, large fires and icebergs from NASA EONET); satellite fire heat spots of the last 24 hours (NASA FIRMS); earthquakes of the past week (USGS).
+- Safety: "Emergency help" (the right emergency number for the country, the address or plus code to read out, the nearest defibrillator and hospital); thunderstorm asthma risk in Victoria (1 October to 31 December); community hazard reports confirmed by other drivers.
+- Also: Apple CarPlay in the iPhone app; a red-light wait estimate from earlier waits; freeway electronic signs in Melbourne; road camera pictures (New South Wales, London, Finland, British Columbia, Hong Kong); radio stations of the listener's own country; bike-share docks where systems publish open data; area profiles from the ABS Census; drinking water and public showers; a parking timer; a fuel price alert; "Flight view" for your own flight with no signal; 3D buildings with shadows in Melbourne and Sydney.
+- Not in Wayaroo: live ship positions; tides; Android Auto.
+- 20 languages checked by people: en, zh, zh-Hant, hi, pa, ar, vi, el, it, fil, es, ne, bn, ur, ta, ko, ja, id, fr, de. More languages are machine translated.
 
 ## Pages
 - [Home](https://wayaroo.com/)
+- [Everything Wayaroo does: every layer and feature](https://wayaroo.com/everything.html)
 - [Live public transport](https://wayaroo.com/live-public-transport.html)
 - [Cities with live public transport](https://wayaroo.com/cities.html): [Melbourne](https://wayaroo.com/melbourne.html), [Sydney](https://wayaroo.com/sydney.html), [Brisbane](https://wayaroo.com/brisbane.html), [Gold Coast](https://wayaroo.com/gold-coast.html), [Adelaide](https://wayaroo.com/adelaide.html), [Canberra](https://wayaroo.com/canberra.html), [Cairns](https://wayaroo.com/cairns.html)
 - [Live ferry map](https://wayaroo.com/ferries.html)
@@ -37,7 +43,7 @@
 ## Where to get it
 - iPhone and iPad: [Wayaroo: Maps & Transport on the App Store](https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478) (free).
 - Any phone or computer: https://app.wayaroo.com/ in the browser (free, no account).
-- Android: in review at Google Play.
+- Android: [Wayaroo: Live Transit & Maps on Google Play](https://play.google.com/store/apps/details?id=com.wayaroo.app) (free).
 
 ## Facts
 - Publisher: Ozrsym Pty Ltd, Victoria, Australia. Contact: support@wayaroo.com

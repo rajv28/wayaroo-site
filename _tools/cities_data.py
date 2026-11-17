@@ -6,6 +6,8 @@ SNAP_DAY = "13 November 2026"
 FARES_CHECKED = "2 November 2026"
 APP = "https://app.wayaroo.com/"
 STORE = "https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478"
+# Google Play has the Android app since 17 Nov 2026 (the same 9 countries as the App Store).
+PLAY = "https://play.google.com/store/apps/details?id=com.wayaroo.app"
 
 CITIES = [
     dict(
