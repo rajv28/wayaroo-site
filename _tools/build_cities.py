@@ -14,12 +14,6 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from cities_data import APP, CITIES, FARES_CHECKED, SNAP, SNAP_DAY, SNAP_ISO, STORE  # noqa: E402
 
-# 16 Nov 2026: Queensland is paused. Translink's open-data terms ask each app for a release and indemnity (and the same
-# from its users); Rajbir's rule is no indemnity, so the app hides Translink's data and Rajbir asks Translink for
-# permission without it. A paused city keeps its page (a short notice in place of the live numbers) and leaves the lists.
-PAUSED = {"brisbane", "gold-coast", "cairns"}
-LISTED = [c for c in CITIES if c["slug"] not in PAUSED]
-
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 E = html.escape
 ADS = '<meta name="google-adsense-account" content="ca-pub-6318067996201537">\n<script>/* Google ads load only outside Europe, where they would first need a consent message (privacy.html). */(function(){var z=\'\';try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||\'\'}catch(e){}if(/^(Europe|Arctic)\\//.test(z)||/^(Atlantic\\/(Reykjavik|Canary|Madeira|Azores|Faroe)|Africa\\/Ceuta|Asia\\/(Nicosia|Famagusta)|America\\/(Cayenne|Guadeloupe|Martinique|Marigot|St_Barthelemy)|Indian\\/(Reunion|Mayotte))$/.test(z))return;var s=document.createElement(\'script\');s.async=true;s.crossOrigin=\'anonymous\';s.src=\'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6318067996201537\';document.head.appendChild(s)})();</script>'
@@ -141,7 +135,7 @@ def city_page(c):
     also = f"\n  <p>{E(c['also'])}</p>" if c["also"] else ""
     extras = "".join(f"\n    <li>{x}</li>" for x in c["extras"])
     faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in c["faq"])
-    others = " · ".join(f'<a href="{o["slug"]}.html">{E(o["name"])}</a>' for o in LISTED if o["slug"] != c["slug"])
+    others = " · ".join(f'<a href="{o["slug"]}.html">{E(o["name"])}</a>' for o in CITIES if o["slug"] != c["slug"])
     body = f'''
   <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">Cities</a> › {E(c["name"])}{lang_links(c)}</p>
   <section class="feature{'' if has_img else ' solo'}">
@@ -236,7 +230,7 @@ def city_page_ja(c):
     also = f"\n  <p>{E(j['also'])}</p>" if j.get("also") else ""
     extras = "".join(f"\n    <li>{x}</li>" for x in j["extras"])
     faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in j["faq"])
-    others = "、".join(f'<a href="{o["slug"]}-ja.html">{E(o["ja"]["name"])}</a>' for o in LISTED if o.get("ja") and o["slug"] != c["slug"])
+    others = "、".join(f'<a href="{o["slug"]}-ja.html">{E(o["ja"]["name"])}</a>' for o in CITIES if o.get("ja") and o["slug"] != c["slug"])
     body = f'''
   <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">都市一覧</a> › {E(j["name"])} · <a href="{c["slug"]}.html" lang="en" hreflang="en">English</a></p>
   <section class="feature{'' if has_img else ' solo'}">
@@ -339,7 +333,7 @@ def city_page_zh(c):
     fare = (f'\n  <p><b>Wayaroo 在此显示的票价优惠：</b>{E(z["fare"])} <span class="note">（核实日期：{zh_date(FARES_CHECKED)}；应用内附有来源链接。）</span></p>' if z.get("fare") else "")
     extras = "".join(f"\n    <li>{x}</li>" for x in z["extras"])
     faq = "".join(f"\n    <details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in z["faq"])
-    others = " · ".join(f'<a href="{o["slug"]}-zh.html">{E(o["zh"]["name"])}</a>' for o in LISTED if o.get("zh") and o["slug"] != c["slug"])
+    others = " · ".join(f'<a href="{o["slug"]}-zh.html">{E(o["zh"]["name"])}</a>' for o in CITIES if o.get("zh") and o["slug"] != c["slug"])
     body = f"""
   <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">城市列表</a> › {E(z["name"])} · <a href="{c["slug"]}.html" lang="en" hreflang="en">English</a></p>
   <section class="feature{'' if has_img else ' solo'}">
@@ -589,10 +583,10 @@ def cities_page():
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Cities with live public transport in Wayaroo", "url": f"https://wayaroo.com/{path}",
           "isPartOf": {"@id": "https://wayaroo.com/#website"}, "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "en-AU", "dateModified": SNAP_ISO}
     rows = ""
-    for c in [x for x in LISTED if x.get("country", "Australia") == "Australia"]:
+    for c in [x for x in CITIES if x.get("country", "Australia") == "Australia"]:
         live = ", ".join(label[0].upper() + label[1:] if i == 0 else label for i, (label, _) in enumerate(c["counts"]))
         rows += f'<tr><td><a href="{c["slug"]}.html"><b>{E(c["name"])}</b></a><br><span class="note">{E(c["region"])}</span></td><td>{E(live)}</td><td>{n(sum(v for _, v in c["counts"]))}<span class="unit"> vehicles</span></td><td><a href="{view_link(c)}">Open the map</a></td></tr>'
-    far = [x for x in LISTED if x.get("country", "Australia") != "Australia"]
+    far = [x for x in CITIES if x.get("country", "Australia") != "Australia"]
     far_rows = "".join(f'<tr><td><a href="{c["slug"]}.html"><b>{E(c["name"])}</b></a><br><span class="note">{E(c["region"])}</span></td><td>{E(join_counts(c["counts"]))}</td><td>{E(c.get("snap", SNAP))}</td></tr>' for c in far)
     far_html = (f'''
   <h3>City pages in other countries</h3>
@@ -606,13 +600,12 @@ def cities_page():
 
   <h2>Australia</h2>
   <div class="tablewrap"><table class="facts wide"><thead><tr><th>City</th><th>Live on the map</th><th>Vehicles</th><th></th></tr></thead><tbody>{rows}</tbody></table></div>
-  <p class="note">Vehicles on the map on {SNAP}. The numbers change through the day. Regional Victoria (Geelong, Ballarat, Bendigo), Newcastle and Wollongong are live too: they are on the pages of Melbourne and Sydney.</p>
+  <p class="note">Vehicles on the map on {SNAP}. The numbers change through the day. Regional Victoria (Geelong, Ballarat, Bendigo), Newcastle, Wollongong and the Sunshine Coast are live too: they are on the pages of Melbourne, Sydney and Brisbane.</p>
 
   <h3>Not live yet</h3>
   <ul class="plain">
     <li><b>Perth:</b> Wayaroo shows stops and timetable times. There are no live positions, because Wayaroo has no open live feed for Perth.</li>
     <li><b>Hobart and Darwin:</b> no live positions yet.</li>
-    <li><b>Queensland (Brisbane, Gold Coast, Sunshine Coast, Cairns, Townsville):</b> paused since 16 November 2026. Translink's open-data terms ask for an indemnity, which Wayaroo does not give. Queensland comes back if Translink allows the use without it.</li>
     <li><b>New Zealand:</b> no live positions yet.</li>
   </ul>
   <p class="note">Everywhere in Australia, Wayaroo also gives directions by car, bike or on foot, public toilets, the weather and places near you.</p>
@@ -636,67 +629,8 @@ def cities_page():
     return path
 
 
-
-PAUSE_EN = ("Since 16 November 2026, Wayaroo does not show Translink's buses, trains, trams and ferries in Queensland. Translink's "
-            "open-data terms ask each app to give the State a release and indemnity, and to ask the same of its users. Wayaroo does "
-            "not give that promise. Queensland comes back on the map if Translink allows the use of its data without it.")
-PAUSE_ZH = ("自 2026 年 11 月 16 日起，Wayaroo 不再显示昆士兰州 Translink 的公交车、火车、电车和渡轮。Translink 的开放数据条款要求每个应用"
-            "向州政府作出免责和赔偿承诺，并要求其用户也作出同样的承诺。Wayaroo 不作出这一承诺，如果 Translink 允许在没有该条款的情况下使用其数据，昆士兰州将重新显示在地图上。")
-
-
-def paused_page(c):
-    """A city whose operator's data Wayaroo does not show now (PAUSED)."""
-    path = f"{c['slug']}.html"
-    title = f"{c['name']}: live public transport paused | Wayaroo"
-    desc = f"Live buses, trains and ferries in {c['name']} are paused in Wayaroo: Translink's terms ask for an indemnity. Directions, toilets and the weather still work."
-    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
-          "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "en-AU", "dateModified": "2026-11-16"}
-    body = f'''
-  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">Cities</a> › {E(c["name"])}</p>
-  <h1>{E(c["name"])}: live public transport is paused</h1>
-  <p>{E(PAUSE_EN)}</p>
-  <p>In {E(c["name"])}, Wayaroo still gives directions by car, bike or on foot, public toilets, the weather and places near you.</p>
-  <p class="note">For timetables and live times in Queensland, use Translink's own website and app.</p>
-  <p><a href="cities.html">Cities with live public transport</a></p>
-
-{CTA}
-
-{FOOT}
-</div>
-</body>
-</html>
-'''
-    (ROOT / path).write_text(head(title, desc, path, "img/share-card.jpg", ld) + body, encoding="utf-8")
-    return path
-
-
-def paused_page_zh(c):
-    path = f"{c['slug']}-zh.html"
-    name = c["zh"]["name"]
-    title = f"{name}：实时公共交通已暂停 | Wayaroo"
-    desc = f"Wayaroo 暂停显示{name}的实时公交、火车和渡轮，因为 Translink 的条款要求赔偿承诺。导航、厕所和天气仍可使用。"
-    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": f"https://wayaroo.com/{path}", "isPartOf": {"@id": "https://wayaroo.com/#website"},
-          "about": {"@id": "https://wayaroo.com/#app"}, "inLanguage": "zh-Hans", "dateModified": "2026-11-16"}
-    body = f'''
-  <p class="note"><a href="index.html">Wayaroo</a> › <a href="cities.html">城市</a> › {E(name)} · <a href="{c["slug"]}.html" lang="en" hreflang="en">English</a></p>
-  <h1>{E(name)}：实时公共交通已暂停</h1>
-  <p>{E(PAUSE_ZH)}</p>
-  <p>在{E(name)}，Wayaroo 仍提供驾车、骑行和步行导航、公共厕所、天气和附近地点。</p>
-  <p class="note">如需昆士兰州的时刻表和实时信息，请使用 Translink 的官方网站和应用。</p>
-
-{ZH_CTA}
-
-{ZH_FOOT}
-</div>
-</body>
-</html>
-'''
-    (ROOT / path).write_text(head(title, desc, path, "img/share-card.jpg", ld, lang="zh-Hans", nav=ZH_NAV) + body, encoding="utf-8")
-    return path
-
-
 if __name__ == "__main__":
-    made = [paused_page(c) if c["slug"] in PAUSED else city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [paused_page_zh(c) if c["slug"] in PAUSED else city_page_zh(c) for c in CITIES if c.get("zh")] + [city_page_tr(c, k) for k in TR for c in CITIES if c.get(k)] + [cities_page()]
+    made = [city_page(c) for c in CITIES] + [city_page_ja(c) for c in CITIES if c.get("ja")] + [city_page_zh(c) for c in CITIES if c.get("zh")] + [city_page_tr(c, k) for k in TR for c in CITIES if c.get(k)] + [cities_page()]
     print("wrote", ", ".join(made))
 
 # App Store links: the store of the page's country when the app is on sale there (Japan, Canada), else Australia.
