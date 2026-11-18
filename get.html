@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Wayaroo</title>
+<meta name="description" content="Get Wayaroo free: the App Store on iPhone and iPad, Google Play on Android, or open it in your browser.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://wayaroo.com/">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css?v=20261118">
+<script>
+/* One short link for social media bios, posters and QR codes (18 Nov 2026): wayaroo.com/get opens the store of the phone.
+   iPhone and iPad: the App Store; Android: Google Play; a computer stays on this page (both badges and the web app). */
+(function () {
+  var ua = navigator.userAgent || "";
+  if (/Android/i.test(ua)) location.replace("https://play.google.com/store/apps/details?id=com.wayaroo.app");
+  else if (/iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) location.replace("https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478");
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+  <nav><a class="brand" href="index.html"><img src="icon.svg" alt="">Wayaroo</a></nav>
+  <section class="hero" style="grid-template-columns:1fr">
+    <div class="sun" aria-hidden="true"></div>
+    <div>
+      <h1>Get Wayaroo free</h1>
+      <p>Live buses, trains and trams, trip plans, directions and fuel prices on one map. No account.</p>
+      <span class="herobtns"><a class="store ios" href="https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478"><img src="img/badges/app-store-en.svg" alt="Download on the App Store" width="144" height="48"></a><a class="store android" href="https://play.google.com/store/apps/details?id=com.wayaroo.app"><img src="img/badges/google-play-en.png" alt="Get it on Google Play" width="161" height="48"></a><a class="badge ghost" href="https://app.wayaroo.com/">Open in your browser: free</a></span>
+    </div>
+  </section>
+</div>
+<script src="stores.js?v=20261118" defer></script>
+</body>
+</html>
