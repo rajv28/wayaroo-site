@@ -88,10 +88,18 @@ a.store[hidden] { display:none; }
 .rate, .hero .rate { font-size:15px; margin:12px 0 4px; max-width:580px; }
 .hero .rate, .hero .rate a { color:#fff; }
 .rate a { font-weight:700; }
-.appbar { position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:10px; padding:8px max(12px, env(safe-area-inset-right)) 8px max(8px, env(safe-area-inset-left)); background:var(--card); border-bottom:1px solid var(--line); box-shadow:0 2px 10px rgba(0,0,0,.08); }
-.appbar img { border-radius:9px; flex:none; }
-.appbar .t { flex:1; min-width:0; line-height:1.25; }
-.appbar .t b { display:block; font-size:15px; }
-.appbar .t span { display:block; font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.appbar a.store img { height:40px; border-radius:0; }
-.appbar .x { flex:none; width:32px; height:44px; border:0; background:none; color:var(--muted); font-size:24px; line-height:1; cursor:pointer; padding:0; }
+.appbar { position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:12px; padding:12px max(14px, env(safe-area-inset-right)) 12px max(14px, env(safe-area-inset-left)); background:rgba(242,242,247,.94); -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px); border-bottom:0.5px solid rgba(60,60,67,.29); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+.appbar img { flex:none; border-radius:12px; box-shadow:0 0 0 0.5px rgba(0,0,0,.12); }
+.appbar .t { flex:1; min-width:0; line-height:1.25; text-decoration:none; color:#000; }
+.appbar .t b, .appbar .t span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.appbar .t b { font-size:17px; font-weight:600; }
+.appbar .t span { font-size:15px; color:rgba(60,60,67,.6); }
+.appbar .get { flex:none; display:grid; place-items:center; width:44px; height:44px; color:#007aff; }
+.appbar .get svg { width:34px; height:34px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.appbar .x { flex:none; display:grid; place-items:center; width:32px; height:32px; margin:6px 0; border:0; border-radius:50%; background:rgba(118,118,128,.12); color:#007aff; cursor:pointer; padding:0; }
+.appbar .x svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; }
+@media (prefers-color-scheme: dark) {
+  .appbar { background:rgba(28,28,30,.94); border-bottom-color:rgba(84,84,88,.6); }
+  .appbar .t { color:#fff; } .appbar .t span { color:rgba(235,235,245,.6); }
+  .appbar .get, .appbar .x { color:#0a84ff; } .appbar .x { background:rgba(118,118,128,.24); }
+}

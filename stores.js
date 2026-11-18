@@ -46,22 +46,28 @@
     host.parentNode.insertBefore(p, host.nextSibling);
   }
 
-  // 3. The bar at the top, on a phone only
+  // 3. The bar at the top, on a phone only, in the look of Apple's own Smart App Banner (Rajbir, 18 Nov 2026: "that is good").
+  // Safari on iPhone and iPad shows Apple's own banner (the apple-itunes-app tag of each page): then this bar is not shown.
   if (!ios && !android) return;
+  var safari = ios && /Safari\//.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|GSA\/|FBAN|FBAV|Instagram|Line\/|Snapchat|DuckDuckGo|YaBrowser|Brave/.test(ua);
+  if (safari) return;
   try { var t = Number(localStorage.getItem("wayaroo.appbar") || 0); if (t && Date.now() - t < 14 * 864e5) return; } catch (e) {}
+  var S = { en: ["Live buses, trains and trams · Free", "Download"], zh: ["实时公交、火车和电车 · 免费", "下载"], ja: ["バス・電車・トラムをライブで · 無料", "ダウンロード"],
+    vi: ["Xe buýt, tàu, xe điện trực tiếp · Miễn phí", "Tải về"], hi: ["लाइव बसें, ट्रेनें और ट्राम · मुफ़्त", "डाउनलोड"], pa: ["ਲਾਈਵ ਬੱਸਾਂ, ਰੇਲਾਂ ਅਤੇ ਟਰਾਮਾਂ · ਮੁਫ਼ਤ", "ਡਾਊਨਲੋਡ"] }[lang] || ["Live buses, trains and trams · Free", "Download"];
+  var NS = "http://www.w3.org/2000/svg";
+  var svg = function (d, cls) { var e = document.createElementNS(NS, "svg"); e.setAttribute("viewBox", "0 0 24 24"); e.setAttribute("aria-hidden", "true"); if (cls) e.setAttribute("class", cls); d.forEach(function (x) { var q = document.createElementNS(NS, "path"); q.setAttribute("d", x); e.appendChild(q); }); return e; };
   var bar = document.createElement("div"); bar.className = "appbar"; bar.setAttribute("role", "region"); bar.setAttribute("aria-label", "Wayaroo app");
-  var x = document.createElement("button"); x.type = "button"; x.className = "x"; x.setAttribute("aria-label", w.close); x.textContent = "×";
-  x.addEventListener("click", function () { bar.remove(); try { localStorage.setItem("wayaroo.appbar", String(Date.now())); } catch (e) {} });
-  var icon = document.createElement("img"); icon.src = at("apple-touch-icon.png"); icon.alt = ""; icon.width = 40; icon.height = 40;
-  var txt = document.createElement("div"); txt.className = "t";
-  var nm = document.createElement("b"); nm.textContent = "Wayaroo"; var sb = document.createElement("span"); sb.textContent = w.sub;
+  var icon = document.createElement("img"); icon.src = at("apple-touch-icon.png"); icon.alt = ""; icon.width = 52; icon.height = 52;
+  var txt = document.createElement("a"); txt.className = "t"; txt.href = ios ? APPLE : PLAY;
+  var nm = document.createElement("b"); nm.textContent = ios ? "Wayaroo: Maps & Transport" : "Wayaroo: Live Transit & Maps";
+  var sb = document.createElement("span"); sb.textContent = S[0];
   txt.appendChild(nm); txt.appendChild(sb);
-  var src = document.querySelector(ios ? "a.store.ios" : "a.store.android");
-  var go = document.createElement("a"); go.className = "store"; go.href = ios ? APPLE : PLAY;
-  var gi = document.createElement("img");
-  if (src && src.querySelector("img")) { gi.src = src.querySelector("img").getAttribute("src"); gi.alt = src.querySelector("img").alt; }
-  else { gi.src = at(ios ? "img/badges/app-store-en.svg" : "img/badges/google-play-en.png"); gi.alt = ios ? "Download on the App Store" : "Get it on Google Play"; }
-  gi.height = 40; gi.width = ios ? 120 : 134; go.appendChild(gi);
-  bar.appendChild(x); bar.appendChild(icon); bar.appendChild(txt); bar.appendChild(go);
+  var go = document.createElement("a"); go.className = "get"; go.href = ios ? APPLE : PLAY;
+  go.setAttribute("aria-label", S[1] + " · " + (ios ? "App Store" : "Google Play"));
+  go.appendChild(svg(["M7 18h10.5a4.5 4.5 0 0 0 .6-8.96A6 6 0 0 0 6.4 8.1 5 5 0 0 0 7 18z", "M12 10v8", "M8.8 14.8 12 18l3.2-3.2"]));
+  var x = document.createElement("button"); x.type = "button"; x.className = "x"; x.setAttribute("aria-label", w.close);
+  x.appendChild(svg(["M7 7l10 10", "M17 7 7 17"]));
+  x.addEventListener("click", function () { bar.remove(); try { localStorage.setItem("wayaroo.appbar", String(Date.now())); } catch (e) {} });
+  bar.appendChild(icon); bar.appendChild(txt); bar.appendChild(go); bar.appendChild(x);
   document.body.insertBefore(bar, document.body.firstChild);
 })();
