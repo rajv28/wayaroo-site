@@ -24,7 +24,7 @@ NAV = '''  <nav>
 FOOT = '''  <footer>
     <p>Wayaroo™ is published by Ozrsym Pty Ltd (ABN 56 671 004 390), Victoria, Australia. Contact: <a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
     <p><a href="index.html">Home</a><a href="cities.html">Cities</a><a href="live-public-transport.html">Live transport</a><a href="fuel-prices.html">Fuel prices</a><a href="driving.html">Driving</a><a href="public-toilets.html">Public toilets</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="credits.html">Data credits</a></p>
-    <p>Follow Wayaroo: <a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.instagram.com/wayaroo/" rel="me noopener">Instagram</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
+    <p>Follow Wayaroo: <a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>'''
 CTA = f'''  <section class="cta">
@@ -189,7 +189,7 @@ JA_NAV = '''  <nav>
 JA_FOOT = '''  <footer>
     <p>Wayaroo™ の発行元は Ozrsym Pty Ltd（ABN 56 671 004 390、オーストラリア・ビクトリア州）です。お問い合わせ：<a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
     <p><a href="index.html">ホーム</a><a href="cities.html">都市一覧</a><a href="live-public-transport.html">交通情報</a><a href="fuel-prices.html">燃料価格</a><a href="driving.html">運転</a><a href="public-toilets.html">公衆トイレ</a><a href="support.html">サポート</a><a href="privacy.html">プライバシー</a><a href="terms.html">利用規約</a><a href="credits.html">データ出典</a></p>
-    <p>Wayaroo をフォロー：<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.instagram.com/wayaroo/" rel="me noopener">Instagram</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
+    <p>Wayaroo をフォロー：<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>'''
 JA_CTA = f'''  <section class="cta">
@@ -284,7 +284,7 @@ ZH_NAV = """  <nav>
 ZH_FOOT = """  <footer>
     <p>Wayaroo™ 由 Ozrsym Pty Ltd（ABN 56 671 004 390，澳大利亚维多利亚州）发布。联系方式：<a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
     <p><a href="index.html">首页</a><a href="cities.html">城市列表</a><a href="live-public-transport.html">实时交通</a><a href="fuel-prices.html">油价</a><a href="driving.html">驾驶</a><a href="public-toilets.html">公共厕所</a><a href="support.html">支持</a><a href="privacy.html">隐私</a><a href="terms.html">条款</a><a href="credits.html">数据来源</a></p>
-    <p>关注 Wayaroo：<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.instagram.com/wayaroo/" rel="me noopener">Instagram</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
+    <p>关注 Wayaroo：<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
     <p>© 2026 Ozrsym Pty Ltd</p>
   </footer>"""
 ZH_CTA = f"""  <section class="cta">
@@ -379,7 +379,7 @@ def city_page_zh(c):
 
 
 TR_FOOT_LINKS = ["index.html", "cities.html", "live-public-transport.html", "fuel-prices.html", "driving.html", "public-toilets.html", "support.html", "privacy.html", "terms.html", "credits.html"]
-FOLLOW = '<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.instagram.com/wayaroo/" rel="me noopener">Instagram</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a>'
+FOLLOW = '<a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a>'
 
 # Page words for the Hindi, Punjabi and Vietnamese city pages (15 Nov 2026). App labels as the app's own
 # strings write them (public/js/lang/hi.json, pa.json, vi.json: foryou, ride_along).
