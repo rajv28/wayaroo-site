@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PLAY_LANG = {"zh": "zh-cn", "ja": "ja", "vi": "vi", "hi": "hi", "pa": "pa"}
 SKIP = {"googlea76703ac629521e5.html"}
+VERSION = "20261118"   # change it when site.css or stores.js changes: browsers then load the new files at once
 
 LINK = re.compile(r'<a class="badge(?: alt2)?" href="(https://(?:apps\.apple\.com|play\.google\.com)/[^"]+)">([^<]+)</a>')
 
@@ -29,9 +30,11 @@ def badgify(html: str) -> str:
                 f'width="161" height="48"></a>')
 
     html = LINK.sub(rep, html)
-    if 'stores.js"' not in html and "</body>" in html:
-        src = "/stores.js" if 'href="/site.css"' in html else "stores.js"   # 404.html is shown at any path
+    if "stores.js" not in html and "</body>" in html:
+        src = "/stores.js" if 'href="/site.css' in html else "stores.js"   # 404.html is shown at any path
         html = html.replace("</body>", f'<script src="{src}" defer></script>\n</body>', 1)
+    html = re.sub(r'href="(/?)site\.css(?:\?v=\d+)?"', lambda m: f'href="{m.group(1)}site.css?v={VERSION}"', html)
+    html = re.sub(r'src="(/?)stores\.js(?:\?v=\d+)?"', lambda m: f'src="{m.group(1)}stores.js?v={VERSION}"', html)
     return html
 
 

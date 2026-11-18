@@ -7,8 +7,8 @@
   var base = (document.currentScript && document.currentScript.src) || location.href;
   var at = function (f) { try { return new URL(f, base).href; } catch (e) { return f; } };
   var ua = navigator.userAgent || "";
-  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  var android = !ios && /Android/i.test(ua);
+  var android = /Android/i.test(ua);
+  var ios = !android && (/iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));   // an iPad says "Macintosh"
   var lang = (document.documentElement.lang || "en").toLowerCase().split("-")[0];
   var W = {
     en: { sub: "Free · Live transport and fuel prices", close: "Close", rate: "Do you use Wayaroo? Rate it on ", ios: "the App Store", android: "Google Play", or: " or " },
