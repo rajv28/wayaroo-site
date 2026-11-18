@@ -79,3 +79,19 @@ video { max-width:100%; }
 /* A WebP photo with a JPEG for old browsers (13 Nov 2026): the <picture> box must not change the layout. */
 picture { display: contents; }
 picture > source { display: none; }
+
+/* Official store badges and the app bar (18 Nov 2026, stores.js and _tools/stores.py) */
+a.store { display:inline-block; line-height:0; border-radius:10px; }
+a.store img { height:48px; width:auto; display:block; }
+a.store:focus-visible { outline:3px solid var(--sun); outline-offset:3px; }
+a.store[hidden] { display:none; }
+.rate, .hero .rate { font-size:15px; margin:12px 0 4px; max-width:580px; }
+.hero .rate, .hero .rate a { color:#fff; }
+.rate a { font-weight:700; }
+.appbar { position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:10px; padding:8px max(12px, env(safe-area-inset-right)) 8px max(8px, env(safe-area-inset-left)); background:var(--card); border-bottom:1px solid var(--line); box-shadow:0 2px 10px rgba(0,0,0,.08); }
+.appbar img { border-radius:9px; flex:none; }
+.appbar .t { flex:1; min-width:0; line-height:1.25; }
+.appbar .t b { display:block; font-size:15px; }
+.appbar .t span { display:block; font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.appbar a.store img { height:40px; border-radius:0; }
+.appbar .x { flex:none; width:32px; height:44px; border:0; background:none; color:var(--muted); font-size:24px; line-height:1; cursor:pointer; padding:0; }

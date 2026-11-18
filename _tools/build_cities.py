@@ -644,3 +644,7 @@ for _c in CITIES:
         _f = ROOT / _path
         if _f.exists():
             _f.write_text(_f.read_text(encoding="utf-8").replace("apps.apple.com/au/app/", f"apps.apple.com/{_cc}/app/"), encoding="utf-8")
+
+# The store links become the official store badges, and each page gets stores.js (18 Nov 2026).
+from stores import badgify_all
+badgify_all(ROOT)
