@@ -1,5 +1,5 @@
 /* Wayaroo store links (18 Nov 2026, Rajbir: "Based on the system they should get option from the top to download app").
-   - iPhone and iPad: the App Store badge first, the Google Play badge hidden; Android: the other way round; a computer: both.
+   - iPhone and iPad: the App Store badge first, then Google Play; Android: the other way round; a computer: both.
    - On a phone, a bar at the top of the page with the store of that phone (close it with x; it stays closed for 14 days).
    - Under the first store badges, a line to rate Wayaroo in the store (no reward and no "give 5 stars": the store rules).
    Nothing is sent anywhere; the closed bar is kept only in this browser. */
@@ -28,8 +28,8 @@
   for (var i = 0; i < boxes.length; i++) {
     var b = boxes[i], a = b.querySelector("a.store.ios"), g = b.querySelector("a.store.android");
     if (android && g && a) b.insertBefore(g, b.firstChild);
-    if (ios && g) g.hidden = true;
-    if (android && a) a.hidden = true;
+    // 20 Nov 2026 (Rajbir: "android download button is missing"): the other store's badge stays in view on a phone too
+    // (a person on an iPhone wants to send the Android link to family). The store of this phone is first.
   }
 
   // 2. A line to rate the app, under the first group of store badges
