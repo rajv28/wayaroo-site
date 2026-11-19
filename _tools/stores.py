@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PLAY_LANG = {"zh": "zh-cn", "ja": "ja", "vi": "vi", "hi": "hi", "pa": "pa"}
 SKIP = {"googlea76703ac629521e5.html"}
-VERSION = "202611182"   # change it when site.css or stores.js changes: browsers then load the new files at once
+VERSION = "202611201"   # change it when site.css or stores.js changes: browsers then load the new files at once
 
 LINK = re.compile(r'<a class="badge(?: alt2)?" href="(https://(?:apps\.apple\.com|play\.google\.com)/[^"]+)">([^<]+)</a>')
 
