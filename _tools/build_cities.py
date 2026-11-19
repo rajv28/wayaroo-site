@@ -59,7 +59,8 @@ def og_size(image):
     return '\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">' if og_image(image).startswith("img/share-") else ""
 
 
-def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
+def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None, ads=True):
+    # 20 Nov 2026: AdSense said "Low-value content". The short Japanese and Chinese city pages carry no ads.
     alt = "".join(f'\n<link rel="alternate" hreflang="{h}" href="https://wayaroo.com/{u}">' for h, u in (alts or []))
     return f'''<!doctype html>
 <html lang="{lang}">
@@ -82,7 +83,7 @@ def head(title, desc, path, image, ld, lang="en-AU", alts=None, nav=None):
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=2)}
 </script>
-{ADS}
+{ADS if ads else ""}
 </head>
 <body>
 <div class="wrap">
@@ -271,7 +272,7 @@ def city_page_ja(c):
 </body>
 </html>
 '''
-    (ROOT / path).write_text(head(j["title"], j["desc"], path, image, ld, lang="ja", alts=lang_alts(c), nav=JA_NAV) + body, encoding="utf-8")
+    (ROOT / path).write_text(head(j["title"], j["desc"], path, image, ld, lang="ja", alts=lang_alts(c), nav=JA_NAV, ads=False) + body, encoding="utf-8")
     return path
 
 
@@ -374,7 +375,7 @@ def city_page_zh(c):
 </body>
 </html>
 """
-    (ROOT / path).write_text(head(z["title"], z["desc"], path, image, ld, lang="zh-Hans", alts=lang_alts(c), nav=ZH_NAV) + body, encoding="utf-8")
+    (ROOT / path).write_text(head(z["title"], z["desc"], path, image, ld, lang="zh-Hans", alts=lang_alts(c), nav=ZH_NAV, ads=False) + body, encoding="utf-8")
     return path
 
 
