@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6831237478">
+<title>How live bus and train tracking works | Wayaroo</title>
+<meta name="description" content="How a map app knows where your bus, train or tram is right now, why it is sometimes wrong, and how to read live times.">
+<link rel="canonical" href="https://wayaroo.com/live-bus-tracking.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css?v=202611182">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Wayaroo">
+<meta property="og:title" content="How live bus and train tracking works">
+<meta property="og:description" content="How a map app knows where your bus, train or tram is right now, why it is sometimes wrong, and how to read live times.">
+<meta property="og:url" content="https://wayaroo.com/live-bus-tracking.html">
+<meta property="og:image" content="https://wayaroo.com/img/layers.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "How live bus and train tracking works", "datePublished": "2026-11-20", "dateModified": "2026-11-20",
+  "url": "https://wayaroo.com/live-bus-tracking.html",
+  "isPartOf": { "@id": "https://wayaroo.com/#website" },
+  "about": { "@id": "https://wayaroo.com/#app" },
+  "inLanguage": "en-AU"
+}
+</script>
+<meta name="google-adsense-account" content="ca-pub-6318067996201537">
+<script>/* Google ads load only outside Europe, where they would first need a consent message (privacy.html). */(function(){var z='';try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}if(/^(Europe|Arctic)\//.test(z)||/^(Atlantic\/(Reykjavik|Canary|Madeira|Azores|Faroe)|Africa\/Ceuta|Asia\/(Nicosia|Famagusta)|America\/(Cayenne|Guadeloupe|Martinique|Marigot|St_Barthelemy)|Indian\/(Reunion|Mayotte))$/.test(z))return;var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6318067996201537';document.head.appendChild(s)})();</script>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="index.html"><img src="icon.svg" alt="">Wayaroo</a>
+    <div class="links"><a href="live-public-transport.html">Live transport</a><a href="fuel-prices.html">Fuel</a><a href="driving.html">Driving</a><a href="public-toilets.html">Toilets</a><a href="support.html">Support</a><a class="open" href="https://app.wayaroo.com/">Open the app</a></div>
+  </nav>
+
+  <article>
+  <h1>How live bus and train tracking works</h1>
+  <p class="note">Written by the Wayaroo team, Melbourne. Updated 20 November 2026.</p>
+  <p>You open a map, and a small bus moves along the road towards your stop. How does the app know where the bus is? This page explains, in plain words, where live public transport data comes from, why the dot sometimes jumps or disappears, and how to read the times so you do not miss your ride.</p>
+
+  <h2>Step 1: the vehicle knows where it is</h2>
+  <p>Most buses, trams and trains in Australian cities carry a GPS unit, often in the ticket machine or the driver's console. Every 10 to 30 seconds it sends its position, the trip it is running and the time to the transport agency's computers.</p>
+
+  <h2>Step 2: the agency publishes it as open data</h2>
+  <p>Transport agencies such as Transport Victoria and Transport for NSW publish this data in a shared world format called <b>GTFS</b> (General Transit Feed Specification). It has two parts:</p>
+  <ul>
+    <li><b>The timetable (GTFS):</b> every route, stop and planned time. It changes every few weeks.</li>
+    <li><b>The live part (GTFS-Realtime):</b> where each vehicle is now (vehicle positions), how late each trip is at each coming stop (trip updates), and alerts such as diversions.</li>
+  </ul>
+  <p>Any app may use this data under an open licence, as long as it names the source. That is why many apps can show the same buses.</p>
+
+  <h2>Step 3: the app joins the two</h2>
+  <p>The app matches each live vehicle to its trip in the timetable. Then it can show the route number, where the bus is going, and the predicted time at each coming stop. Wayaroo reads the live feeds every few seconds and draws each vehicle on the map.</p>
+
+  <h2>Why the dot is sometimes wrong</h2>
+  <ul>
+    <li><b>Old position.</b> A vehicle sends its position only every 10 to 30 seconds, so the dot can be a little behind.</li>
+    <li><b>No signal.</b> In tunnels and the City Loop, trains lose GPS. The dot can stop or jump.</li>
+    <li><b>Not tracked.</b> Some vehicles have no working tracker on some days. The app then can show only the timetable time.</li>
+    <li><b>Wrong trip.</b> Sometimes a vehicle is logged on to the wrong trip, so it shows the wrong route for a while.</li>
+  </ul>
+
+  <h2>How to read live times</h2>
+  <ul>
+    <li><b>"Live" or a moving dot:</b> the time is a prediction from where the vehicle is now. It is usually good to a minute or two.</li>
+    <li><b>"Scheduled":</b> there is no live data for this trip. The vehicle may be early, late, or not running.</li>
+    <li><b>Be at the stop early.</b> Buses can leave a stop early when the road is clear. Aim to arrive two or three minutes before the predicted time.</li>
+  </ul>
+
+  <h2>Where Wayaroo has live vehicles</h2>
+  <p>Wayaroo shows live vehicles in Victoria and New South Wales, in many other Australian cities, and in cities around the world whose agencies publish open feeds. The <a href="cities.html">cities page</a> lists them, and each city page names its source and licence.</p>
+
+  <h2>Sources</h2>
+  <ul>
+    <li>MobilityData, <a href="https://gtfs.org/" rel="noopener">GTFS: the General Transit Feed Specification</a>.</li>
+    <li>Transport Victoria, <a href="https://opendata.transport.vic.gov.au/" rel="noopener">Open data</a>.</li>
+  </ul>
+  </article>
+
+  <section class="cta">
+    <div><b>Get Wayaroo on the App Store or Google Play, or use it in your browser.</b><br><span class="note">Free, no account, 20 languages. For iPhone, iPad and Android.</span></div>
+    <span class="ctabtns"><a class="store ios" href="https://apps.apple.com/au/app/wayaroo-maps-transport/id6831237478"><img src="img/badges/app-store-en.svg" alt="Download on the App Store" width="144" height="48"></a><a class="store android" href="https://play.google.com/store/apps/details?id=com.wayaroo.app"><img src="img/badges/google-play-en.png" alt="Get it on Google Play" width="161" height="48"></a><a class="badge alt" href="https://app.wayaroo.com/">Open in your browser</a></span>
+  </section>
+
+  <footer>
+    <p>Wayaroo™ is published by Ozrsym Pty Ltd (ABN 56 671 004 390), Victoria, Australia. Contact: <a href="mailto:support@wayaroo.com">support@wayaroo.com</a></p>
+    <p><a href="index.html">Home</a><a href="cities.html">Cities</a><a href="live-public-transport.html">Live transport</a><a href="driving.html">Driving</a><a href="public-toilets.html">Public toilets</a><a href="about.html">About</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="credits.html">Data credits</a></p>
+    <p>Follow Wayaroo: <a href="https://www.facebook.com/profile.php?id=61596770721004" rel="me noopener">Facebook</a><a href="https://www.linkedin.com/company/wayaroo" rel="me noopener">LinkedIn</a><a href="https://www.youtube.com/@wayarooapp" rel="me noopener">YouTube</a><a href="https://x.com/wayaroo" rel="me noopener">X</a><a href="https://www.tiktok.com/@app.wayaroo.com" rel="me noopener">TikTok</a></p>
+    <p>© 2026 Ozrsym Pty Ltd</p>
+  </footer>
+</div>
+<script src="stores.js?v=202611201" defer></script>
+</body>
+</html>
