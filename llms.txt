@@ -36,6 +36,7 @@
 - [Public toilets](https://wayaroo.com/public-toilets.html)
 - [Run, walk and ride tracker](https://wayaroo.com/run-walk-ride-tracker.html)
 - [Budget tracker that stays on the phone](https://wayaroo.com/budget-tracker.html)
+- [Explore space: the planets today, spacecraft, asteroids, tonight's sky, Earth now, robots on Mars, rocket launches](https://wayaroo.com/space.html)
 - [Support](https://wayaroo.com/support.html)
 - [Data credits and licences](https://wayaroo.com/credits.html)
 - [Privacy](https://wayaroo.com/privacy.html) · [Terms](https://wayaroo.com/terms.html)
