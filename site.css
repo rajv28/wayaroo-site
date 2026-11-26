@@ -103,3 +103,8 @@ a.store[hidden] { display:none; }
   .appbar .t { color:#fff; } .appbar .t span { color:rgba(235,235,245,.6); }
   .appbar .get, .appbar .x { color:#0a84ff; } .appbar .x { background:rgba(118,118,128,.24); }
 }
+
+/* The promises under the store buttons (26 Nov 2026): only what is true. */
+.promises{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px 16px;font-weight:600}
+.promises li::before{content:"✓ ";color:#0f766e;font-weight:800}
+.step{display:block;font-weight:800;color:#0f766e;text-transform:uppercase;font-size:12px;letter-spacing:.06em;margin-bottom:6px}
